@@ -1909,10 +1909,10 @@ select option {
 }
 
 /* ==========================================================================
-   COMPREHENSIVE RESPONSIVE MEDIA QUERIES (TABLET & MOBILE)
+   PAGE-BY-PAGE RESPONSIVE MEDIA QUERIES (MOBILE & TABLET)
    ========================================================================== */
 
-/* Universal Mobile / Tablet Touch & Viewport Utilities */
+/* Universal Viewport & Scroll Utilities */
 html,
 body,
 #root,
@@ -1922,50 +1922,54 @@ body,
   overflow-x: hidden;
 }
 
-/* Touch-friendly momentum scrolling for tables and tabs */
 .table-container,
 .filter-bar,
+.tabs-header,
 .sidebar-nav,
 .flyout-body,
 .search-dropdown-menu {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Subtle scrollbars on touch containers */
-.table-container::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
+.table-container::-webkit-scrollbar,
+.tabs-header::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
 }
 
-.table-container::-webkit-scrollbar-track {
+.table-container::-webkit-scrollbar-track,
+.tabs-header::-webkit-scrollbar-track {
   background: #f1f5f9;
   border-radius: 4px;
 }
 
-.table-container::-webkit-scrollbar-thumb {
+.table-container::-webkit-scrollbar-thumb,
+.tabs-header::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
 }
 
-.table-container::-webkit-scrollbar-thumb:hover {
+.table-container::-webkit-scrollbar-thumb:hover,
+.tabs-header::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-/* --------------------------------------------------------------------------
-   1. Large Tablet / Small Laptop (max-width: 1024px)
-   -------------------------------------------------------------------------- */
+
+/* ==========================================================================
+   PART A: TABLET RESPONSIVE MEDIA QUERIES (max-width: 1024px & 768px)
+   Organized Page-by-Page
+   ========================================================================== */
+
 @media (max-width: 1024px) {
+  /* Page 1: Header - Tablet Landscape */
+  .global-search-container {
+    max-width: 240px;
+  }
+
+  /* Page 2: Dashboard - Tablet Landscape */
   .dashboard-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-  }
-
-  .form-grid.grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .page-content {
-    padding: 1.25rem 1.5rem;
   }
 
   .stats-grid {
@@ -1973,15 +1977,24 @@ body,
     gap: 1rem;
   }
 
+  /* Page 3: Projects - Tablet Landscape */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Page 6: Daily Report Form - Tablet Landscape */
+  .form-grid.grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Page 11: Site Photos - Tablet Landscape */
   .photos-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .global-search-container {
-    max-width: 250px;
-  }
-
+  /* Page 15: Login - Tablet Landscape */
   .login-hero {
     padding: 2.5rem;
   }
@@ -1991,15 +2004,12 @@ body,
   }
 }
 
-/* --------------------------------------------------------------------------
-   2. Tablet Portrait & Mid-size Devices (max-width: 768px)
-   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   :root {
     --header-height: 58px;
   }
 
-  /* Off-canvas mobile sidebar */
+  /* Page 1: Top Header & Navigation Drawer (Tablet Portrait) */
   .sidebar {
     position: fixed;
     left: -280px;
@@ -2023,7 +2033,6 @@ body,
     display: inline-flex;
   }
 
-  /* Header adjustments on tablet */
   .top-header {
     padding: 0 1rem;
     gap: 0.5rem;
@@ -2044,7 +2053,7 @@ body,
   }
 
   .global-search-container {
-    max-width: 200px;
+    max-width: 195px;
     flex: 1 1 auto;
     min-width: 0;
   }
@@ -2064,7 +2073,6 @@ body,
     left: 0;
   }
 
-  /* Hide user name and role text in header to prevent overcrowding */
   .user-meta {
     display: none;
   }
@@ -2073,7 +2081,6 @@ body,
     padding: 0.2rem;
   }
 
-  /* Hide "Role:" prefix on tablet portrait */
   .role-prefix {
     display: none;
   }
@@ -2099,7 +2106,7 @@ body,
     right: 0;
   }
 
-  /* Page content spacing on tablet */
+  /* Page Layout (Tablet Portrait) */
   .page-content {
     padding: 1.15rem 1rem;
   }
@@ -2118,7 +2125,28 @@ body,
     gap: 0.5rem;
   }
 
-  /* Filter bar wrap on tablet */
+  /* Page 2: Dashboard (Tablet Portrait) */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+  }
+
+  .progress-donut-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .donut-graphic {
+    margin: 0 auto;
+  }
+
+  .donut-legend {
+    width: 100%;
+  }
+
+  /* Page 3: Projects & Filter Bar (Tablet Portrait) */
   .filter-bar {
     padding: 0.85rem 1rem;
     gap: 0.75rem;
@@ -2141,29 +2169,22 @@ body,
     flex: 1 1 auto;
   }
 
-  /* Stats cards */
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.875rem;
+  /* Page 4 & 5: Sites & Daily Reports Tabs (Tablet Portrait) */
+  .tabs-header {
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    padding-bottom: 0.25rem;
   }
 
-  /* Circular progress widget alignment */
-  .progress-donut-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem 0;
+  .tab-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.78rem;
+    flex-shrink: 0;
   }
 
-  .donut-graphic {
-    margin: 0 auto;
-  }
-
-  .donut-legend {
-    width: 100%;
-  }
-
-  /* Photos grid on tablet: clean 2-column */
+  /* Page 11: Site Photos (Tablet Portrait) */
   .photos-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -2173,7 +2194,31 @@ body,
     height: 180px;
   }
 
-  /* Modals on tablet */
+  /* Page 13: Profile (Tablet Portrait) */
+  .profile-page-content {
+    padding-top: 1.25rem;
+  }
+
+  /* Page 15: Login Screen (Tablet Portrait) */
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-hero {
+    display: none;
+  }
+
+  .login-form-pane {
+    flex: 1;
+    padding: 2.5rem 1.5rem;
+    min-height: 100vh;
+  }
+
+  .mobile-login-brand {
+    display: flex;
+  }
+
+  /* Universal Modals (Tablet Portrait) */
   .modal-backdrop {
     padding: 0.75rem;
   }
@@ -2195,36 +2240,19 @@ body,
   .modal-footer {
     padding: 0.85rem 1.25rem;
   }
-
-  /* Profile page on tablet */
-  .profile-page-content {
-    padding-top: 1.25rem;
-  }
-
-  /* Split Login Screen becomes unified form view */
-  .login-wrapper {
-    flex-direction: column;
-  }
-
-  .login-hero {
-    display: none;
-  }
-
-  .login-form-pane {
-    flex: 1;
-    padding: 2.5rem 1.5rem;
-    min-height: 100vh;
-  }
-
-  .mobile-login-brand {
-    display: flex;
-  }
 }
 
+
+/* ==========================================================================
+   PART B: MOBILE RESPONSIVE MEDIA QUERIES (max-width: 640px, 480px & 360px)
+   Organized Page-by-Page
+   ========================================================================== */
+
 /* --------------------------------------------------------------------------
-   3. Standard Mobile Phones (max-width: 640px)
+   B.1 Standard Mobile (max-width: 640px) - Page-by-Page
    -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
+  /* Page 1: Top Header & Navigation */
   .top-header {
     padding: 0 0.75rem;
     gap: 0.35rem;
@@ -2247,6 +2275,7 @@ body,
     font-size: 0.72rem;
   }
 
+  /* Page Layout & Sizing */
   .page-content {
     padding: 1rem 0.875rem;
   }
@@ -2259,7 +2288,6 @@ body,
     font-size: 0.8rem;
   }
 
-  /* Mobile Actions layout */
   .page-actions {
     display: flex;
     flex-wrap: wrap;
@@ -2273,27 +2301,10 @@ body,
     justify-content: center;
   }
 
-  /* Forms to single column on mobile */
-  .form-grid,
-  .form-grid.grid-3 {
-    grid-template-columns: 1fr !important;
-    gap: 0.875rem;
-  }
-
-  .form-group.col-span-2 {
-    grid-column: span 1;
-  }
-
-  .form-label {
-    font-size: 0.8rem;
-  }
-
-  .form-input,
-  select.form-input,
-  textarea.form-input {
-    min-height: 40px;
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
+  /* Page 2: Dashboard */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
   .stat-card {
@@ -2304,7 +2315,22 @@ body,
     font-size: 1.45rem;
   }
 
-  /* Filter bar vertical stacking on mobile */
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .progress-card-header {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* Page 3: Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .filter-bar {
     flex-direction: column;
     align-items: stretch;
@@ -2327,7 +2353,105 @@ body,
     width: 100%;
   }
 
-  /* Table responsiveness on mobile */
+  /* Page 4: Sites */
+  .sites-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Page 5: Daily Reports */
+  .daily-reports-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .report-review-actions {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .report-review-actions .btn {
+    width: 100%;
+  }
+
+  /* Page 6: Daily Report Form */
+  .form-grid,
+  .form-grid.grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 0.875rem;
+  }
+
+  .form-group.col-span-2 {
+    grid-column: span 1;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+  }
+
+  .form-input,
+  select.form-input,
+  textarea.form-input {
+    min-height: 40px;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Page 7: Workers */
+  .workers-view .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .worker-toggle-actions {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  /* Page 8: Materials */
+  .materials-view .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  /* Page 9: Equipment */
+  .equipment-view .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  /* Page 10: Issues & Safety */
+  .issues-view .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  /* Page 11: Site Photos */
+  .photos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .photo-img-wrapper {
+    height: 200px;
+  }
+
+  /* Page 12: Reports & Export */
+  .btn-pdf-light,
+  .btn-csv {
+    min-height: 36px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  /* Page 13: Profile */
+  .profile-page-content {
+    padding-top: 1rem !important;
+  }
+
+  /* Universal Tables & Cards */
   .table-container {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
@@ -2345,7 +2469,6 @@ body,
     letter-spacing: 0.04em;
   }
 
-  /* Cards responsive curves & padding */
   .card-header {
     padding: 0.875rem 1rem;
     flex-direction: column;
@@ -2364,14 +2487,7 @@ body,
     gap: 0.5rem;
   }
 
-  /* Progress view header alignment */
-  .progress-card-header {
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-
-  /* Modal Mobile Experience */
+  /* Universal Modals (Mobile Bottom Sheet) */
   .modal-backdrop {
     padding: 0.5rem;
     align-items: flex-end;
@@ -2405,22 +2521,6 @@ body,
     width: 100%;
   }
 
-  /* Photo Cards: 1 column on mobile */
-  .photos-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .photo-img-wrapper {
-    height: 200px;
-  }
-
-  /* User profile card responsive */
-  .profile-page-content {
-    padding-top: 1rem !important;
-  }
-
-  /* Toast Notifications pinned to mobile bottom */
   .toast-container {
     left: 12px;
     right: 12px;
@@ -2435,14 +2535,10 @@ body,
 }
 
 /* --------------------------------------------------------------------------
-   4. Narrow Viewports (max-width: 520px)
+   B.2 Narrow Mobile (max-width: 520px) - Page-by-Page
    -------------------------------------------------------------------------- */
 @media (max-width: 520px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
+  /* Page 1: Header */
   .top-header {
     padding: 0 0.65rem;
     gap: 0.35rem;
@@ -2455,6 +2551,12 @@ body,
 
   .header-right {
     gap: 0.35rem;
+  }
+
+  /* Page 2: Dashboard */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .progress-card-header {
@@ -2481,15 +2583,15 @@ body,
 }
 
 /* --------------------------------------------------------------------------
-   5. Small Mobile Phones (max-width: 480px)
+   B.3 Small Mobile Phones (max-width: 480px) - Page-by-Page
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
+  /* Page 1: Header - Compact Logo, Adaptive Search */
   .top-header {
     padding: 0 0.5rem;
     gap: 0.25rem;
   }
 
-  /* Hide "Site Log" text on small mobile, keep the helmet logo icon */
   .header-brand-text {
     display: none;
   }
@@ -2503,7 +2605,6 @@ body,
     height: 28px;
   }
 
-  /* Keep search bar compact, expands on focus */
   .global-search-container {
     max-width: 125px;
     transition: max-width 0.22s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2560,6 +2661,7 @@ body,
     left: -36px;
   }
 
+  /* Page Layout (Small Mobile) */
   .page-content {
     padding: 0.85rem 0.65rem;
   }
@@ -2576,6 +2678,18 @@ body,
     width: 100%;
   }
 
+  /* Page 2: Dashboard */
+  .donut-graphic {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  /* Page 7: Workers */
+  .workers-view .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Page 15: Login */
   .login-form-pane {
     padding: 2rem 1rem;
   }
@@ -2584,7 +2698,7 @@ body,
     font-size: 1.5rem;
   }
 
-  /* Data Table cells slightly more compact */
+  /* Universal Elements (Small Mobile) */
   .data-table th,
   .data-table td {
     padding: 0.6rem 0.65rem;
@@ -2595,17 +2709,13 @@ body,
     padding: 0.48rem 0.75rem;
     font-size: 0.8rem;
   }
-
-  .donut-graphic {
-    transform: scale(0.9);
-    transform-origin: center;
-  }
 }
 
 /* --------------------------------------------------------------------------
-   6. Ultra-compact devices (max-width: 360px)
+   B.4 Ultra-Compact Devices (max-width: 360px) - Page-by-Page
    -------------------------------------------------------------------------- */
 @media (max-width: 360px) {
+  /* Page 1: Header (Ultra-Compact) */
   .top-header {
     padding: 0 0.35rem;
   }
@@ -2633,6 +2743,7 @@ body,
     height: 26px;
   }
 
+  /* Universal Modals (Ultra-Compact) */
   .modal-backdrop {
     padding: 0.25rem;
   }
@@ -2641,4 +2752,5 @@ body,
     border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
 }
+
 
