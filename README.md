@@ -35,15 +35,17 @@ Field engineers and managers frequently face disorganized communication across m
 10. **Issues & Safety Observations**:
     - **Issues**: Problem reporting categorized by equipment failure, material shortage, weather, etc., with severity ratings (Critical, High, Medium, Low) and resolution workflows.
     - **Safety**: Inspection hazards, risk levels, corrective actions, and closure audit trails.
-11. **Site Photographs Gallery**: Categorized photo cards (Work Progress, Safety, Materials, Completed Work) with image zoom modal.
-12. **Reports & Export Center**: Instant client-ready **CSV / Excel-compatible file download generation** for daily reports, workforce attendance, material logs, and equipment usage.
-13. **In-App Notifications**: Real-time alerts for report submissions, safety warnings, and material requisition approvals.
+11. **Site Photographs Gallery**: Categorized photo cards (Work Progress, Safety, Materials, Completed Work) with image zoom modal, photo capture time tracking (`Taken:` timestamp), and upload time tracking (`Uploaded:` timestamp).
+12. **Reports & Export Center**: Instant client-ready **CSV and PDF Document generation** across 7 modules (Daily Reports, Project Progress, Worker Attendance, Material Inventory, Equipment Usage, Site Issues, Safety Observations) featuring light-accented styling and direct browser downloads.
+13. **User Profile**: Clean, horizontally centered profile view with personal account credentials, role details, contact information, and assigned work sites.
+14. **In-App Notifications**: Real-time alerts for report submissions, safety warnings, and material requisition approvals.
+15. **Mobile & Tablet Responsive System**: Off-canvas sliding sidebar drawer, adaptive top header with collapsing brand text and flexible search, touch momentum scrolling, and responsive form grids across all breakpoints (<360px, <480px, <640px, <768px, <1024px).
 
 ---
 
 ## 👥 Role-Based Access Control (RBAC)
 
-SiteLog includes a top-bar **Role Selector** to seamlessly switch between user perspectives:
+SiteLog includes a top-bar **Role Selector** and a dynamically tailored sidebar for each user perspective:
 
 | Feature / Permission | Site Engineer 👷‍♂️ | Project Manager 📋 | Admin ⚙️ |
 | :--- | :---: | :---: | :---: |
@@ -55,8 +57,8 @@ SiteLog includes a top-bar **Role Selector** to seamlessly switch between user p
 | **Approve Material Requests** | ❌ | ✅ | ✅ |
 | **Log Daily Equipment Hours** | ✅ | ✅ | ✅ |
 | **Report Issues & Safety Observations**| ✅ | ✅ | ✅ |
-| **Upload Site Photographs** | ✅ | ✅ | ✅ |
-| **Export CSV Data** | ✅ | ✅ | ✅ |
+| **Upload Site Photos with Date/Time** | ✅ | ✅ | ✅ |
+| **Export CSV & PDF Reports** | ✅ | ✅ | ✅ |
 | **Manage Users & Role Assignment** | ❌ | ❌ | ✅ |
 | **Configure Master Taxonomies** | ❌ | ❌ | ✅ |
 
@@ -65,10 +67,14 @@ SiteLog includes a top-bar **Role Selector** to seamlessly switch between user p
 ## 💻 Tech Stack
 
 - **Core Framework**: React 19 + TypeScript + Vite
-- **Styling**: Vanilla CSS Design System with CSS tokens, micro-interactions, responsive flex/grid layouts, and Google Fonts (*Plus Jakarta Sans*)
+- **Styling**: Vanilla CSS Design System with CSS tokens, micro-interactions, responsive flex/grid layouts, responsive media queries, and Google Fonts (*Plus Jakarta Sans*)
 - **Icons**: Lucide Icons
 - **State & Storage**: React Context API with automatic `localStorage` persistence across page reloads
-- **Export Engine**: Pure client-side UTF-8 CSV generation (compatible with Excel & Sheets)
+- **Export Engine**:
+  - **CSV**: Pure client-side UTF-8 CSV generation (compatible with Excel & Google Sheets)
+  - **PDF**: Client-side styled document generation using `jspdf` and `jspdf-autotable`
+- **Responsive Architecture**: Multi-tier CSS media queries covering ultra-compact mobile (<360px), small mobile (<480px), standard mobile (<640px), tablet portrait (<768px), and tablet landscape (<1024px)
+
 
 ---
 
