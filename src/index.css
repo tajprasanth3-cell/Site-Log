@@ -131,13 +131,14 @@ body {
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   height: 100vh;
+  max-height: 100vh;
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--sidebar-border);
   z-index: 40;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
 
@@ -284,12 +285,15 @@ body {
 }
 
 .sidebar-nav {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
-  padding: 1rem 0.75rem;
+  overflow-x: hidden;
+  padding: 1rem 0.75rem 2.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebar-category {
@@ -352,6 +356,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex-shrink: 0;
+  background-color: var(--sidebar-bg);
 }
 
 .role-indicator {
@@ -427,6 +433,16 @@ body {
   background-color: var(--bg-subtle);
   color: var(--text-primary);
   border-color: var(--border-hover);
+}
+
+/* Sidebar Backdrop for Mobile Drawer */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 990;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .mobile-search-trigger-btn {
@@ -2053,7 +2069,35 @@ body,
    ========================================================================== */
 
 @media (max-width: 1024px) {
-  /* Page 1: Header - Tablet Landscape */
+  /* Page 1: Navigation Drawer & Header - Tablet Landscape */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    width: min(290px, 85vw);
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: none;
+    z-index: 999;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar-close-btn {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
   .global-search-container {
     max-width: 240px;
   }
@@ -2101,20 +2145,9 @@ body,
     --header-height: 58px;
   }
 
-  /* Page 1: Top Header & Navigation Drawer (Tablet Portrait) */
+  /* Page 1: Top Header & Navigation Drawer (Mobile & Tablet Portrait) */
   .sidebar {
-    position: fixed;
-    left: -280px;
-    width: 270px;
-    top: 0;
-    bottom: 0;
-    box-shadow: var(--shadow-xl);
-    z-index: 50;
-    transition: left 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sidebar.mobile-open {
-    left: 0;
+    width: min(300px, 86vw);
   }
 
   .sidebar-close-btn {

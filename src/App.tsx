@@ -76,8 +76,7 @@ const MainAppLayout: React.FC = () => {
       {/* Mobile backdrop */}
       {isMobileSidebarOpen && (
         <div
-          className="modal-backdrop"
-          style={{ zIndex: 35 }}
+          className="sidebar-backdrop"
           onClick={() => setIsMobileSidebarOpen(false)}
         />
       )}
