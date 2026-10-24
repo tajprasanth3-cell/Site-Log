@@ -31,10 +31,13 @@ export const ProgressView: React.FC = () => {
                   </div>
                 </div>
                 <div className="progress-stat-badge">
-                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.1 }}>
+                  <span className="progress-percentage-val">
                     {proj.progress}%
-                  </div>
-                  <span className="badge badge-success" style={{ marginTop: '2px' }}>On Schedule</span>
+                  </span>
+                  <span className="badge badge-success">
+                    <CheckCircle size={13} />
+                    On Schedule
+                  </span>
                 </div>
               </div>
 

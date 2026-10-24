@@ -1342,6 +1342,43 @@ body {
   color: var(--primary);
 }
 
+/* Page 5: Project Progress Monitoring Card Header & Badges */
+.progress-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.progress-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.progress-percentage-val {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.progress-stat-badge .badge-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
 /* Light-colored PDF action buttons and badges */
 .btn-pdf-light {
   background-color: #fff1f2 !important;
