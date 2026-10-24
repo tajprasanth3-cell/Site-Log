@@ -36,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
     dailyReports,
     materials,
     equipment,
+    isBackendConnected,
   } = useApp();
 
   const [showNotifications, setShowNotifications] = useState(false);
@@ -259,6 +260,15 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
             </select>
             <ChevronDown size={11} className="role-chevron" />
           </div>
+        </div>
+
+        {/* API Backend Connection Status Indicator */}
+        <div
+          className={`api-status-badge ${isBackendConnected ? 'connected' : 'offline'}`}
+          title={isBackendConnected ? 'Backend API connected (http://localhost:5000)' : 'Running on local cache (Backend offline)'}
+        >
+          <span className="api-status-dot" />
+          <span className="api-status-text">{isBackendConnected ? 'API Live' : 'Local'}</span>
         </div>
 
         {/* Notifications */}

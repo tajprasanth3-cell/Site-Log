@@ -100,7 +100,7 @@ export const IssuesSafetyView: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content issues-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Issues & Safety Observations</h1>

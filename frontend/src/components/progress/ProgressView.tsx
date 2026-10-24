@@ -6,7 +6,7 @@ export const ProgressView: React.FC = () => {
   const { projects, sites } = useApp();
 
   return (
-    <div className="page-content">
+    <div className="page-content progress-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Project Progress Monitoring</h1>

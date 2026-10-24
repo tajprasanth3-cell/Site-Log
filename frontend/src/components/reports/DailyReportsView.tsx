@@ -52,7 +52,7 @@ export const DailyReportsView: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content daily-reports-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Daily Site Reports</h1>

@@ -58,7 +58,7 @@ export const MaterialsView: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content materials-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Material Management</h1>

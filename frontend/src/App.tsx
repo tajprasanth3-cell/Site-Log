@@ -90,7 +90,7 @@ const MainAppLayout: React.FC = () => {
       {/* Content wrapper */}
       <div className="main-wrapper">
         <Header onToggleMobileSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)} />
-        <main>{renderActiveView()}</main>
+        <main className="main-content-area">{renderActiveView()}</main>
       </div>
 
       {/* Toast Notification Container */}

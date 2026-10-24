@@ -22,7 +22,7 @@ export const PhotosView: React.FC = () => {
   });
 
   return (
-    <div className="page-content">
+    <div className="page-content photos-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Site Photographs</h1>

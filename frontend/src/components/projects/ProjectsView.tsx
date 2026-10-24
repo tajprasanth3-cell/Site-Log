@@ -59,7 +59,7 @@ export const ProjectsView: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content projects-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">Projects</h1>

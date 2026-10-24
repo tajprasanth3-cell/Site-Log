@@ -614,6 +614,65 @@ body {
   color: #c2410c;
 }
 
+/* API Backend Status Badge */
+.api-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.api-status-badge.connected {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.api-status-badge.offline {
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.api-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.api-status-badge.connected .api-status-dot {
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  animation: pulse-dot 2s infinite;
+}
+
+.api-status-badge.offline .api-status-dot {
+  background: #94a3b8;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
 .role-switcher:focus-within .role-chevron {
   transform: rotate(180deg);
 }
@@ -2024,12 +2083,60 @@ select option {
 
 /* Universal Viewport & Scroll Utilities */
 html,
-body,
-#root,
-.app-layout,
-.main-wrapper {
+body {
+  width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+#root,
+.app-container,
+.app-layout,
+.main-wrapper,
+.main-content-area,
+.page-content {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.table-container > .data-table {
+  width: 100%;
+  min-width: 660px;
+  border-collapse: collapse;
+}
+
+.mobile-scroll-hint {
+  display: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-xs);
+  border: 1px dashed var(--primary-border);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .mobile-scroll-hint {
+    display: block;
+  }
 }
 
 .table-container,
@@ -2524,6 +2631,18 @@ body,
     gap: 0.75rem;
   }
 
+  .daily-reports-view .page-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .daily-reports-view .page-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .report-review-actions {
     flex-direction: column-reverse;
     gap: 0.5rem;
@@ -2532,9 +2651,38 @@ body,
 
   .report-review-actions .btn {
     width: 100%;
+    justify-content: center;
   }
 
   /* Page 6: Daily Report Form */
+  .daily-report-form .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .daily-report-form .page-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .daily-report-form .page-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .report-attendance-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .progress-sites-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
   .form-grid,
   .form-grid.grid-3 {
     grid-template-columns: 1fr !important;
@@ -2566,11 +2714,25 @@ body,
     min-height: 40px;
     font-size: 0.85rem;
     padding: 0.5rem 0.75rem;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* Page 7: Workers */
+  .workers-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .workers-view .page-actions,
+  .workers-view .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .workers-view .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 0.65rem;
   }
 
@@ -2580,24 +2742,84 @@ body,
   }
 
   /* Page 8: Materials */
+  .materials-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .materials-view .page-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .materials-view .page-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .materials-view .stats-grid {
     grid-template-columns: 1fr;
     gap: 0.65rem;
   }
 
   /* Page 9: Equipment */
+  .equipment-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .equipment-view .page-actions,
+  .equipment-view .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .equipment-view .stats-grid {
     grid-template-columns: 1fr;
     gap: 0.65rem;
   }
 
   /* Page 10: Issues & Safety */
+  .issues-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .issues-view .page-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .issues-view .page-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .issues-view .stats-grid {
     grid-template-columns: 1fr;
     gap: 0.65rem;
   }
 
   /* Page 11: Site Photos */
+  .photos-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .photos-view .page-actions,
+  .photos-view .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .photos-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2605,9 +2827,16 @@ body,
 
   .photo-img-wrapper {
     height: 200px;
+    width: 100%;
   }
 
   /* Page 12: Reports & Export */
+  .exports-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
   .btn-pdf-light,
   .btn-csv {
     min-height: 36px;
@@ -2615,27 +2844,77 @@ body,
     font-size: 0.75rem;
   }
 
-  /* Page 13: Profile */
-  .profile-page-content {
-    padding-top: 1rem !important;
+  /* Page 13: Sites & Projects Headers */
+  .sites-view .page-header,
+  .projects-view .page-header,
+  .progress-view .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .sites-view .page-actions,
+  .sites-view .page-header .btn,
+  .projects-view .page-actions,
+  .projects-view .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Tabs Headers across all pages */
+  .tabs-header {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    gap: 0.35rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
   }
 
   /* Universal Tables & Cards */
   .table-container {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    box-sizing: border-box !important;
     border-radius: var(--radius-md);
+  }
+
+  .data-table {
+    width: 100% !important;
+    min-width: 650px !important;
+    border-collapse: collapse;
   }
 
   .data-table th,
   .data-table td {
     padding: 0.65rem 0.75rem;
     font-size: 0.8rem;
+    white-space: normal;
   }
 
   .data-table th {
     font-size: 0.68rem;
     letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden;
   }
 
   .card-header {
@@ -2647,6 +2926,8 @@ body,
 
   .card-body {
     padding: 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .card-footer {
@@ -2656,39 +2937,62 @@ body,
     gap: 0.5rem;
   }
 
-  /* Universal Modals (Mobile Bottom Sheet) */
+  /* Universal Modals (Clean Mobile Bottom Sheet, No Bleed) */
   .modal-backdrop {
-    padding: 0.5rem;
-    align-items: flex-end;
+    padding: 0 !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
   }
 
   .modal-content {
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    max-height: 92vh;
-    width: 100%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
+    max-height: 90vh !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
   }
 
   .modal-header {
-    padding: 0.875rem 1rem;
+    padding: 0.875rem 1rem !important;
+    flex-shrink: 0 !important;
+    border-bottom: 1px solid var(--border);
   }
 
   .modal-title {
-    font-size: 1.05rem;
+    font-size: 1.05rem !important;
   }
 
   .modal-body {
-    padding: 1rem;
+    padding: 1rem !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
   }
 
   .modal-footer {
-    padding: 0.75rem 1rem;
-    margin: 1rem -1rem -1rem -1rem !important;
-    flex-direction: column-reverse;
-    gap: 0.5rem;
+    padding: 0.75rem 1rem !important;
+    margin: 1rem 0 0 0 !important;
+    border-top: 1px solid var(--border);
+    flex-direction: column-reverse !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
   }
 
   .modal-footer .btn {
-    width: 100%;
+    width: 100% !important;
+    min-height: 42px;
+    justify-content: center;
+    margin: 0 !important;
   }
 
   .toast-container {
@@ -2791,6 +3095,21 @@ body,
   .role-select {
     max-width: 72px;
     font-size: 0.7rem;
+  }
+
+  .api-status-badge {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  @media (max-width: 380px) {
+    .api-status-text {
+      display: none;
+    }
+    .api-status-badge {
+      padding: 0.3rem;
+      border-radius: 50%;
+    }
   }
 
   .icon-btn {

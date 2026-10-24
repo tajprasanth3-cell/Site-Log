@@ -125,30 +125,32 @@ export const ReportReviewModal: React.FC<ReportReviewModalProps> = ({
           <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: '#334155' }}>
             Work Progress Log
           </div>
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Planned</th>
-                <th>Completed</th>
-                <th>Progress %</th>
-              </tr>
-            </thead>
-            <tbody>
-              {report.workProgress.map((wp, i) => (
-                <tr key={i}>
-                  <td style={{ fontWeight: 600 }}>{wp.category}</td>
-                  <td>{wp.description}</td>
-                  <td>{wp.plannedQty} {wp.unit}</td>
-                  <td>{wp.completedQty} {wp.unit}</td>
-                  <td>
-                    <span style={{ fontWeight: 800, fontSize: '0.85rem', color: '#f97316' }}>{wp.progressPercentage}%</span>
-                  </td>
+          <div className="table-container">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Planned</th>
+                  <th>Completed</th>
+                  <th>Progress %</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {report.workProgress.map((wp, i) => (
+                  <tr key={i}>
+                    <td style={{ fontWeight: 600 }}>{wp.category}</td>
+                    <td>{wp.description}</td>
+                    <td>{wp.plannedQty} {wp.unit}</td>
+                    <td>{wp.completedQty} {wp.unit}</td>
+                    <td>
+                      <span style={{ fontWeight: 800, fontSize: '0.85rem', color: '#f97316' }}>{wp.progressPercentage}%</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Observations & Problems */}

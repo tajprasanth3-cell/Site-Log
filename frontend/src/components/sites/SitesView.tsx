@@ -51,7 +51,7 @@ export const SitesView: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content sites-view">
       <div className="page-header">
         <div>
           <h1 className="page-title">

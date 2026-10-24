@@ -340,7 +340,7 @@ export const DailyReportForm: React.FC = () => {
   };
 
   return (
-    <div className="page-content">
+    <div className="page-content daily-report-form">
       {/* Top Header Matching Screenshot 5 */}
       <div className="page-header">
         <div>
@@ -509,6 +509,7 @@ export const DailyReportForm: React.FC = () => {
           </div>
           <div className="card-body">
             <div
+              className="report-attendance-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
@@ -1418,28 +1419,30 @@ export const DailyReportForm: React.FC = () => {
               <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem' }}>
                 Work Progress Items:
               </div>
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Planned</th>
-                    <th>Completed</th>
-                    <th>Progress</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {workProgressRows.map((r, i) => (
-                    <tr key={i}>
-                      <td>{r.category}</td>
-                      <td>{r.description}</td>
-                      <td>{r.plannedQty} {r.unit}</td>
-                      <td>{r.completedQty} {r.unit}</td>
-                      <td style={{ fontWeight: 700, color: '#f97316' }}>{r.progressPercentage}%</td>
+              <div className="table-container">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Description</th>
+                      <th>Planned</th>
+                      <th>Completed</th>
+                      <th>Progress</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {workProgressRows.map((r, i) => (
+                      <tr key={i}>
+                        <td>{r.category}</td>
+                        <td>{r.description}</td>
+                        <td>{r.plannedQty} {r.unit}</td>
+                        <td>{r.completedQty} {r.unit}</td>
+                        <td style={{ fontWeight: 700, color: '#f97316' }}>{r.progressPercentage}%</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             {/* Attached Photographs in Preview */}

@@ -35,7 +35,7 @@ import {
   siteImagesMap,
 } from '../data/mockData';
 import { scrollToTop } from '../utils/scroll';
-
+import { api } from '../services/api';
 
 interface Toast {
   id: string;
@@ -46,6 +46,7 @@ interface Toast {
 interface AppContextType {
   currentUser: User;
   isAuthenticated: boolean;
+  isBackendConnected: boolean;
   activeSection: string;
   setActiveSection: (section: string) => void;
   login: (email: string, role?: UserRole) => boolean;
@@ -194,6 +195,42 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [selectedReportForReview, setSelectedReportForReview] = useState<DailyReport | null>(null);
   const [selectedReportForEdit, setSelectedReportForEdit] = useState<DailyReport | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [isBackendConnected, setIsBackendConnected] = useState<boolean>(false);
+
+  // Initial Sync from Backend API
+  useEffect(() => {
+    let active = true;
+    async function syncWithBackend() {
+      try {
+        const isOnline = await api.checkHealth();
+        if (!isOnline || !active) return;
+        setIsBackendConnected(true);
+
+        const initial = await api.getInitialData();
+        if (initial && active) {
+          if (Array.isArray(initial.projects) && initial.projects.length) setProjects(initial.projects);
+          if (Array.isArray(initial.sites) && initial.sites.length) setSites(initial.sites);
+          if (Array.isArray(initial.dailyReports) && initial.dailyReports.length) setDailyReports(initial.dailyReports);
+          if (Array.isArray(initial.workers) && initial.workers.length) setWorkers(initial.workers);
+          if (Array.isArray(initial.materials) && initial.materials.length) setMaterials(initial.materials);
+          if (Array.isArray(initial.materialRequests) && initial.materialRequests.length) setMaterialRequests(initial.materialRequests);
+          if (Array.isArray(initial.equipment) && initial.equipment.length) setEquipment(initial.equipment);
+          if (Array.isArray(initial.equipmentUsageLogs) && initial.equipmentUsageLogs.length) setEquipmentUsageLogs(initial.equipmentUsageLogs);
+          if (Array.isArray(initial.issues) && initial.issues.length) setIssues(initial.issues);
+          if (Array.isArray(initial.safetyObservations) && initial.safetyObservations.length) setSafetyObservations(initial.safetyObservations);
+          if (Array.isArray(initial.photos) && initial.photos.length) setPhotos(initial.photos);
+          if (Array.isArray(initial.notifications) && initial.notifications.length) setNotifications(initial.notifications);
+          console.log('[SiteLog] Synced successfully with Backend API (http://localhost:5000)');
+        }
+      } catch (err) {
+        console.warn('[SiteLog] Backend API not reachable, running on local persistent store.');
+      }
+    }
+    syncWithBackend();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Auto-sync states to localStorage
   useEffect(() => saveToStorage('currentUser', currentUser), [currentUser]);
@@ -288,16 +325,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setProjects((prev) => [newProj, ...prev]);
     showToast(`Project "${newProj.name}" created successfully!`);
+    api.createProject(p).catch(() => {});
   };
 
   const updateProject = (updated: Project) => {
     setProjects((prev) => prev.map((p) => (p.id === updated.id ? updated : p)));
     showToast(`Project "${updated.name}" updated!`);
+    api.updateProject(updated).catch(() => {});
   };
 
   const deleteProject = (id: string) => {
     setProjects((prev) => prev.filter((p) => p.id !== id));
     showToast('Project removed', 'info');
+    api.deleteProject(id).catch(() => {});
   };
 
   // Sites CRUD
@@ -308,11 +348,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setSites((prev) => [newSite, ...prev]);
     showToast(`Construction Site "${newSite.name}" added!`);
+    api.createSite(s).catch(() => {});
   };
 
   const updateSite = (updated: ConstructionSite) => {
     setSites((prev) => prev.map((s) => (s.id === updated.id ? updated : s)));
     showToast(`Site "${updated.name}" updated!`);
+    api.updateSite(updated).catch(() => {});
   };
 
   // Daily Reports CRUD & Workflow
@@ -349,6 +391,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         ? 'Daily Site Report submitted successfully for Manager review!'
         : 'Daily Site Report saved as draft.'
     );
+    api.createReport(r).catch(() => {});
   };
 
   const updateDailyReport = (updated: DailyReport) => {
@@ -373,6 +416,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
 
     showToast('Daily Report updated successfully!');
+    api.updateReport(refreshed).catch(() => {});
   };
 
   const approveReport = (reportId: string, comment: string) => {
@@ -411,6 +455,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setNotifications((prev) => [notif, ...prev]);
     showToast(`Report ${reportId} approved!`);
+    api.approveReport(reportId, comment, currentUser.name, currentUser.id).catch(() => {});
   };
 
   const requestReportRevision = (reportId: string, comment: string) => {
@@ -449,6 +494,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setNotifications((prev) => [notif, ...prev]);
     showToast(`Revision request sent for ${reportId}!`, 'info');
+    api.requestRevision(reportId, comment, currentUser.name, currentUser.id).catch(() => {});
   };
 
   // Workers
@@ -459,6 +505,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setWorkers((prev) => [newWorker, ...prev]);
     showToast(`Worker ${newWorker.name} added!`);
+    api.createWorker(w).catch(() => {});
   };
 
   const updateWorkerAttendance = (workerId: string, status: AttendanceStatus) => {
@@ -466,6 +513,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       prev.map((w) => (w.id === workerId ? { ...w, todayAttendance: status } : w))
     );
     showToast(`Attendance updated for worker`, 'info');
+    api.updateWorkerAttendance(workerId, status).catch(() => {});
   };
 
   // Materials & Requests
@@ -476,11 +524,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setMaterials((prev) => [newMat, ...prev]);
     showToast(`Material ${newMat.name} added to inventory!`);
+    api.createMaterial(m).catch(() => {});
   };
 
   const updateMaterial = (updated: Material) => {
     setMaterials((prev) => prev.map((m) => (m.id === updated.id ? updated : m)));
     showToast(`Material updated`);
+    api.updateMaterial(updated).catch(() => {});
   };
 
   const addMaterialRequest = (mr: Omit<MaterialRequest, 'id' | 'createdAt' | 'status'>) => {
@@ -504,6 +554,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setNotifications((prev) => [notif, ...prev]);
     showToast(`Material request for ${newReq.materialName} sent to Manager!`);
+    api.createMaterialRequest(mr).catch(() => {});
   };
 
   const updateMaterialRequestStatus = (id: string, status: MaterialRequestStatus, remarks?: string) => {
@@ -511,6 +562,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       prev.map((mr) => (mr.id === id ? { ...mr, status, managerRemarks: remarks || mr.managerRemarks } : mr))
     );
     showToast(`Material request status updated to: ${status}`);
+    api.updateMaterialRequestStatus(id, status, remarks).catch(() => {});
   };
 
   // Equipment
@@ -521,6 +573,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setEquipment((prev) => [newEqp, ...prev]);
     showToast(`Equipment ${newEqp.name} registered!`);
+    api.createEquipment(e).catch(() => {});
   };
 
   const logEquipmentUsage = (log: Omit<EquipmentUsageLog, 'id'>) => {
@@ -530,6 +583,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setEquipmentUsageLogs((prev) => [newLog, ...prev]);
     showToast(`Usage logged for ${log.equipmentName}`);
+    api.logEquipmentUsage(log).catch(() => {});
   };
 
   // Issues
@@ -553,6 +607,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setNotifications((prev) => [notif, ...prev]);
     showToast(`Issue ${newIssue.id} reported!`);
+    api.createIssue(i).catch(() => {});
   };
 
   const updateIssueStatus = (id: string, status: IssueStatus, resolution?: string) => {
@@ -570,6 +625,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       )
     );
     showToast(`Issue status changed to ${status}`);
+    api.updateIssueStatus(id, status, resolution).catch(() => {});
   };
 
   // Safety
@@ -593,6 +649,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setNotifications((prev) => [notif, ...prev]);
     showToast(`Safety observation recorded!`);
+    api.createSafetyObservation(s).catch(() => {});
   };
 
   const updateSafetyStatus = (id: string, status: SafetyStatus, remarks?: string) => {
@@ -600,6 +657,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       prev.map((s) => (s.id === id ? { ...s, status, remarks: remarks || s.remarks } : s))
     );
     showToast(`Safety observation status updated to ${status}`);
+    api.updateSafetyStatus(id, status, remarks).catch(() => {});
   };
 
   // Photos
@@ -616,6 +674,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
     setPhotos((prev) => [newPhoto, ...prev]);
     showToast(`Photo uploaded (Taken: ${taken}, Uploaded: ${uploaded})!`);
+    api.createPhoto(p).catch(() => {});
   };
 
   // Notifications
@@ -633,6 +692,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       value={{
         currentUser,
         isAuthenticated,
+        isBackendConnected,
         activeSection,
         setActiveSection,
         login,
