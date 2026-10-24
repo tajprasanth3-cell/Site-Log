@@ -18,7 +18,8 @@ import {
   UserRole,
 } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const rawBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T | null> {
   try {

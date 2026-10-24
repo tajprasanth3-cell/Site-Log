@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sitelog-backend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_URL
+        value: "*"
+      - key: MONGODB_URI
+        value: mongodb+srv://tajprasanth3_db_user:sitelog@cluster0.aevi79z.mongodb.net/sitelog?retryWrites=true&w=majority
