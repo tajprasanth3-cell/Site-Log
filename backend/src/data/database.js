@@ -2,11 +2,28 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import * as initialSeed from './initialData.js';
+import * as models from '../models/index.js';
+import { isMongoConnected } from '../config/db.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const STORAGE_DIR = path.resolve(__dirname, '../../storage');
 const DB_FILE = path.join(STORAGE_DIR, 'db.json');
+
+const COLLECTION_MODEL_MAP = {
+  projects: models.ProjectModel,
+  sites: models.SiteModel,
+  dailyReports: models.DailyReportModel,
+  workers: models.WorkerModel,
+  materials: models.MaterialModel,
+  materialRequests: models.MaterialRequestModel,
+  equipment: models.EquipmentModel,
+  equipmentUsageLogs: models.EquipmentUsageLogModel,
+  issues: models.IssueModel,
+  safetyObservations: models.SafetyObservationModel,
+  photos: models.PhotoModel,
+  users: models.UserModel,
+};
 
 class Database {
   constructor() {
@@ -23,7 +40,7 @@ class Database {
       try {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         this.data = JSON.parse(raw);
-        console.log('[Database] Loaded existing database from storage/db.json');
+        console.log('[Database] Loaded local persistent store from storage/db.json');
         return;
       } catch (err) {
         console.error('[Database] Failed to read db.json, re-seeding default data:', err.message);
@@ -56,7 +73,7 @@ class Database {
     };
 
     this.persist();
-    console.log('[Database] Seeded new database into storage/db.json');
+    console.log('[Database] Seeded new local store into storage/db.json');
   }
 
   persist() {
@@ -64,6 +81,37 @@ class Database {
       fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf-8');
     } catch (err) {
       console.error('[Database] Error saving to db.json:', err.message);
+    }
+  }
+
+  // Synchronize collections with MongoDB Atlas upon connection
+  async syncWithMongoDB() {
+    if (!isMongoConnected()) return;
+
+    try {
+      console.log('🔄 [MongoDB] Synchronizing collections with MongoDB Atlas...');
+      for (const [collectionName, Model] of Object.entries(COLLECTION_MODEL_MAP)) {
+        if (!Model) continue;
+
+        const count = await Model.countDocuments();
+        if (count === 0 && Array.isArray(this.data[collectionName]) && this.data[collectionName].length > 0) {
+          // Seed MongoDB Atlas with initial data
+          await Model.insertMany(this.data[collectionName]);
+          console.log(`   ✓ Seeded ${this.data[collectionName].length} items into Atlas [${collectionName}]`);
+        } else if (count > 0) {
+          // Load latest records from MongoDB Atlas
+          const docs = await Model.find({}).lean();
+          this.data[collectionName] = docs.map((d) => {
+            const { _id, __v, ...rest } = d;
+            return rest;
+          });
+          console.log(`   ✓ Hydrated ${docs.length} items from Atlas [${collectionName}]`);
+        }
+      }
+      this.persist();
+      console.log('✅ [MongoDB] All collections in sync with MongoDB Atlas!');
+    } catch (err) {
+      console.error('⚠️ [MongoDB] Error during collection sync:', err.message);
     }
   }
 
@@ -82,6 +130,15 @@ class Database {
     }
     this.data[collection].unshift(item);
     this.persist();
+
+    // Mirror to MongoDB Atlas asynchronously
+    if (isMongoConnected() && COLLECTION_MODEL_MAP[collection]) {
+      const Model = COLLECTION_MODEL_MAP[collection];
+      Model.create(item).catch((err) => {
+        console.error(`[MongoDB] Error inserting into ${collection}:`, err.message);
+      });
+    }
+
     return item;
   }
 
@@ -96,6 +153,15 @@ class Database {
       updatedAt: new Date().toISOString(),
     };
     this.persist();
+
+    // Mirror to MongoDB Atlas asynchronously
+    if (isMongoConnected() && COLLECTION_MODEL_MAP[collection]) {
+      const Model = COLLECTION_MODEL_MAP[collection];
+      Model.findOneAndUpdate({ id: String(id) }, updates, { new: true }).catch((err) => {
+        console.error(`[MongoDB] Error updating ${collection} ${id}:`, err.message);
+      });
+    }
+
     return this.data[collection][index];
   }
 
@@ -106,6 +172,15 @@ class Database {
 
     this.data[collection].splice(index, 1);
     this.persist();
+
+    // Mirror to MongoDB Atlas asynchronously
+    if (isMongoConnected() && COLLECTION_MODEL_MAP[collection]) {
+      const Model = COLLECTION_MODEL_MAP[collection];
+      Model.findOneAndDelete({ id: String(id) }).catch((err) => {
+        console.error(`[MongoDB] Error deleting ${collection} ${id}:`, err.message);
+      });
+    }
+
     return true;
   }
 
