@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   Search,
@@ -13,6 +13,7 @@ import {
   UserCheck,
   HardHat,
   ChevronDown,
+  X,
 } from 'lucide-react';
 import { UserRole } from '../../types';
 import { scrollToTop } from '../../utils/scroll';
@@ -40,6 +41,22 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleOpenMobileSearch = () => {
+    setIsMobileSearchOpen(true);
+    setShowSearchDropdown(true);
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 100);
+  };
+
+  const handleCloseMobileSearch = () => {
+    setIsMobileSearchOpen(false);
+    setShowSearchDropdown(false);
+    setSearchQuery('');
+  };
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
@@ -99,6 +116,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
     setActiveSection(section);
     setSearchQuery('');
     setShowSearchDropdown(false);
+    setIsMobileSearchOpen(false);
     scrollToTop();
   };
 
@@ -113,9 +131,9 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           <Menu size={20} />
         </button>
 
-        {/* SiteLog Brand Logo in Header - Click to go to Dashboard */}
+        {/* SiteLog Brand Logo in Header - on mobile, closed (hidden) when search is open */}
         <div
-          className="header-brand-logo"
+          className={`header-brand-logo ${isMobileSearchOpen ? 'mobile-hidden' : ''}`}
           onClick={() => {
             setActiveSection('dashboard');
             scrollToTop();
@@ -140,13 +158,30 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           </span>
         </div>
 
-        <div className="global-search-container">
+        {/* On mobile: search icon button (only visible on mobile when search is NOT open) */}
+        {!isMobileSearchOpen && (
+          <button
+            type="button"
+            className="mobile-search-trigger-btn"
+            onClick={handleOpenMobileSearch}
+            title="Search"
+            aria-label="Open search"
+          >
+            <Search size={18} />
+          </button>
+        )}
+
+        {/* Search Bar Container:
+            - Desktop: always visible in normal size
+            - Mobile: only opens when search icon is clicked, in a small compact size (not full)! */}
+        <div className={`global-search-container ${isMobileSearchOpen ? 'mobile-search-open' : ''}`}>
           <div className="global-search-bar">
-            <Search size={16} color="#94a3b8" />
+            <Search size={15} color="#94a3b8" />
             <input
+              ref={searchInputRef}
               type="text"
               className="global-search-input"
-              placeholder="Search projects, sites, reports..."
+              placeholder="Search..."
               value={searchQuery}
               onFocus={() => setShowSearchDropdown(true)}
               onChange={(e) => {
@@ -154,26 +189,29 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
                 setShowSearchDropdown(true);
               }}
             />
-            {searchQuery && (
+            {searchQuery ? (
               <button
                 type="button"
                 onClick={() => {
                   setSearchQuery('');
                   setShowSearchDropdown(false);
+                  searchInputRef.current?.focus();
                 }}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#94a3b8',
-                  cursor: 'pointer',
-                  padding: '2px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
+                className="search-clear-btn"
+                title="Clear query"
               >
-                ✕
+                <X size={14} />
               </button>
-            )}
+            ) : isMobileSearchOpen ? (
+              <button
+                type="button"
+                onClick={handleCloseMobileSearch}
+                className="search-clear-btn"
+                title="Close search"
+              >
+                <X size={14} />
+              </button>
+            ) : null}
           </div>
 
           {showSearchDropdown && trimmedQuery.length > 1 && (
