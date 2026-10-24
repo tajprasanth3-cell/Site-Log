@@ -131,9 +131,10 @@ body {
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   height: 100vh;
-  max-height: 100vh;
-  position: sticky;
+  position: fixed;
+  left: 0;
   top: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--sidebar-border);
@@ -382,11 +383,12 @@ body {
 
 /* Main Content Area */
 .main-wrapper {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  min-width: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  width: 100%;
   background-color: var(--bg-body);
   overflow-x: hidden;
 }
@@ -2070,6 +2072,11 @@ body,
 
 @media (max-width: 1024px) {
   /* Page 1: Navigation Drawer & Header - Tablet Landscape */
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
