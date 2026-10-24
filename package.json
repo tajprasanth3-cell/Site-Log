@@ -1,28 +1,16 @@
 {
-  "name": "sitelog",
+  "name": "sitelog-monorepo",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "description": "Site Log - Construction Site Operations & Daily Reporting Platform",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build": "npm --prefix frontend run build",
+    "start:backend": "npm --prefix backend run start"
   },
-  "dependencies": {
-    "jspdf": "^4.2.1",
-    "jspdf-autotable": "^5.0.9",
-    "lucide-react": "^1.59.0",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^24.19.2",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.2",
-    "oxlint": "^1.88.0",
-    "typescript": "~7.0.2",
-    "vite": "^8.3.4"
-  }
+  "keywords": ["sitelog", "construction", "daily-reporting"],
+  "author": "",
+  "license": "ISC"
 }
