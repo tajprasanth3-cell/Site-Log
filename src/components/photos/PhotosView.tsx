@@ -128,12 +128,12 @@ export const PhotosView: React.FC = () => {
                       {photo.siteName}
                     </span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '0.72rem', color: '#64748b' }}>
-                    <span title="Date and time photo was taken" style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                  <div className="photo-timestamps-row" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', fontSize: '0.72rem', color: '#64748b', flexWrap: 'wrap', gap: '4px' }}>
+                    <span title="Date and time photo was taken" style={{ display: 'flex', alignItems: 'center', gap: '3px', whiteSpace: 'nowrap' }}>
                       <Camera size={11} color="#0284c7" />
                       Taken: {photo.takenAt || photo.dateTime}
                     </span>
-                    <span title="Date and time photo was uploaded" style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                    <span title="Date and time photo was uploaded" style={{ display: 'flex', alignItems: 'center', gap: '3px', whiteSpace: 'nowrap' }}>
                       <Clock size={11} color="#10b981" />
                       Uploaded: {photo.uploadedAt || photo.dateTime}
                     </span>

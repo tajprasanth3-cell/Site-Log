@@ -1142,7 +1142,7 @@ export const DailyReportForm: React.FC = () => {
         </div>
 
         {/* Bottom Actions */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginBottom: '2rem' }}>
+        <div className="report-bottom-actions">
           <button
             type="button"
             className="btn btn-secondary"

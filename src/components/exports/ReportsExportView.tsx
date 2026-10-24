@@ -400,9 +400,9 @@ export const ReportsExportView: React.FC = () => {
       {/* Filter Bar */}
       <div className="filter-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569' }}>Date Range:</span>
-            <div className="search-input-wrapper" style={{ width: '220px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', width: '100%', maxWidth: '320px' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', whiteSpace: 'nowrap' }}>Date Range:</span>
+            <div className="search-input-wrapper date-range-input-wrapper" style={{ flex: '1 1 180px', width: 'auto' }}>
               <Calendar size={14} color="#94a3b8" />
               <input
                 type="text"

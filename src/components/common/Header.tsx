@@ -140,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           </span>
         </div>
 
-        <div className="global-search-container" style={{ position: 'relative', width: '100%', maxWidth: '340px' }}>
+        <div className="global-search-container">
           <div className="global-search-bar">
             <Search size={16} color="#94a3b8" />
             <input
