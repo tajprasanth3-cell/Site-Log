@@ -210,32 +210,6 @@ export const LoginPage: React.FC = () => {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Role Perspective</label>
-              <div style={{ position: 'relative' }}>
-                <UserCheck
-                  size={16}
-                  style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }}
-                />
-                <select
-                  className="form-input"
-                  style={{ width: '100%', paddingLeft: '2.4rem' }}
-                  value={selectedRole}
-                  onChange={(e) => {
-                    const r = e.target.value as UserRole;
-                    setSelectedRole(r);
-                    if (r === 'site_engineer') setEmail('ashok@sitelog.com');
-                    else if (r === 'project_manager') setEmail('priya@sitelog.com');
-                    else if (r === 'admin') setEmail('admin@sitelog.com');
-                  }}
-                >
-                  <option value="site_engineer">Site Engineer (Ashok)</option>
-                  <option value="project_manager">Project Manager (Priya)</option>
-                  <option value="admin">Administrator (Arjun Mehta)</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="form-group">
               <label className="form-label">Password</label>
               <div style={{ position: 'relative' }}>
                 <Lock
