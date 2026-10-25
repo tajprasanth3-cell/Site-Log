@@ -1254,8 +1254,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.65rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-wrap: nowrap !important;
   width: 100%;
   min-width: 0;
 }
@@ -1263,16 +1263,28 @@ body {
 .dashboard-card-header .card-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   font-size: 0.95rem;
   font-weight: 700;
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
+  overflow: hidden;
 }
 
 .dashboard-card-header .card-title span {
-  word-break: break-word;
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-card-header .btn,
+.dashboard-card-header .badge {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  margin-left: auto !important;
+  padding: 0.28rem 0.65rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
 }
 
 /* Recent Reports: Desktop Table vs Mobile Cards */
@@ -3293,14 +3305,45 @@ body {
     box-sizing: border-box !important;
   }
 
-  /* 3. Recent Issues Card */
+  /* 3. Dashboard Card Headers (Always stay on the exact same row with View all / Badge on the right) */
   .recent-issues-card .card-header,
   .recent-reports-card .card-header,
   .progress-donut-card .card-header {
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+    display: flex !important;
     align-items: center !important;
-    padding: 0.85rem 1rem !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 0.85rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .recent-issues-card .card-title,
+  .recent-reports-card .card-title,
+  .progress-donut-card .card-title {
+    font-size: 0.85rem !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .recent-issues-card .card-title span,
+  .recent-reports-card .card-title span,
+  .progress-donut-card .card-title span {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .recent-issues-card .btn,
+  .recent-reports-card .btn,
+  .progress-donut-card .badge {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    margin-left: auto !important;
+    padding: 0.22rem 0.55rem !important;
+    font-size: 0.72rem !important;
   }
 
   .dashboard-issues-body {
