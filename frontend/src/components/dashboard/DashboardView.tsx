@@ -167,12 +167,13 @@ export const DashboardView: React.FC = () => {
       </div>
 
       {/* Main Grid: Left Charts & Reports, Right Issues & Featured Site */}
+      {/* Main Grid: Left Charts & Reports, Right Issues & Featured Site */}
       <div className="dashboard-grid">
         {/* Left Column */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="dashboard-col dashboard-col-main">
           {/* Project Progress Donut Widget */}
-          <div className="card dashboard-card">
-            <div className="card-header">
+          <div className="card dashboard-card progress-donut-card">
+            <div className="card-header dashboard-card-header">
               <div className="card-title">
                 <TrendingUp size={18} color="#f97316" />
                 <span>Overall Project Progress</span>
@@ -216,17 +217,17 @@ export const DashboardView: React.FC = () => {
                 <div className="donut-legend">
                   <div className="legend-item">
                     <span className="legend-dot" style={{ backgroundColor: '#10b981' }} />
-                    <span style={{ color: '#475569' }}>Completed Sites</span>
+                    <span className="legend-text">Completed Sites</span>
                     <span className="legend-val">44%</span>
                   </div>
                   <div className="legend-item">
                     <span className="legend-dot" style={{ backgroundColor: '#f97316' }} />
-                    <span style={{ color: '#475569' }}>In Progress Sites</span>
+                    <span className="legend-text">In Progress Sites</span>
                     <span className="legend-val">37%</span>
                   </div>
                   <div className="legend-item">
                     <span className="legend-dot" style={{ backgroundColor: '#94a3b8' }} />
-                    <span style={{ color: '#475569' }}>Not Started / Planned</span>
+                    <span className="legend-text">Not Started / Planned</span>
                     <span className="legend-val">19%</span>
                   </div>
                 </div>
@@ -235,8 +236,8 @@ export const DashboardView: React.FC = () => {
           </div>
 
           {/* Recent Site Reports */}
-          <div className="card dashboard-card">
-            <div className="card-header">
+          <div className="card dashboard-card recent-reports-card">
+            <div className="card-header dashboard-card-header">
               <div className="card-title">
                 <FileText size={18} color="#2563eb" />
                 <span>Recent Daily Site Reports</span>
@@ -248,7 +249,9 @@ export const DashboardView: React.FC = () => {
                 View all &rarr;
               </button>
             </div>
-            <div className="table-container" style={{ border: 'none', borderRadius: 0, boxShadow: 'none' }}>
+
+            {/* Desktop / Tablet Table View */}
+            <div className="dashboard-reports-desktop table-container" style={{ border: 'none', borderRadius: 0, boxShadow: 'none' }}>
               <table className="data-table">
                 <thead>
                   <tr>
@@ -284,13 +287,39 @@ export const DashboardView: React.FC = () => {
                 </tbody>
               </table>
             </div>
+
+            {/* Mobile Touch-Friendly Card View (Zero Horizontal Overflow) */}
+            <div className="dashboard-reports-mobile">
+              {recentReports.map((report) => (
+                <div key={report.id} className="dashboard-mobile-report-card">
+                  <div className="mobile-report-header">
+                    <span className="mobile-report-id">{report.id}</span>
+                    {renderStatusBadge(report.status)}
+                  </div>
+                  <div className="mobile-report-sitename">{report.siteName}</div>
+                  <div className="mobile-report-details">
+                    <span>📅 {report.date}</span>
+                    <span>👷 {report.engineerName}</span>
+                  </div>
+                  <button
+                    className="btn btn-sm btn-secondary mobile-report-review-btn"
+                    onClick={() => {
+                      setSelectedReportForReview(report);
+                      setActiveSection('daily-reports');
+                    }}
+                  >
+                    Review Report
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Right Column: Featured Site & Recent Issues */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="dashboard-col dashboard-col-side">
           {/* Featured Active Site Card */}
-          <div className="card dashboard-card" style={{ overflow: 'hidden' }}>
+          <div className="card dashboard-card featured-site-card" style={{ overflow: 'hidden' }}>
             <div style={{ position: 'relative', height: '140px', backgroundColor: '#0f172a' }}>
               <img
                 src={siteAImg}
@@ -337,8 +366,8 @@ export const DashboardView: React.FC = () => {
           </div>
 
           {/* Recent Issues Card (Mockup 2) */}
-          <div className="card dashboard-card">
-            <div className="card-header">
+          <div className="card dashboard-card recent-issues-card">
+            <div className="card-header dashboard-card-header">
               <div className="card-title">
                 <AlertTriangle size={18} color="#ef4444" />
                 <span>Recent Issues</span>
@@ -350,28 +379,20 @@ export const DashboardView: React.FC = () => {
                 View all &rarr;
               </button>
             </div>
-            <div className="card-body" style={{ padding: '0.75rem 1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div className="card-body dashboard-issues-body">
               {recentIssues.map((issue) => (
-                <div
-                  key={issue.id}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                    padding: '0.65rem 0',
-                    borderBottom: '1px solid #f1f5f9',
-                    gap: '0.5rem',
-                  }}
-                >
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '0.825rem', fontWeight: 700, color: '#0f172a' }}>
+                <div key={issue.id} className="dashboard-issue-item">
+                  <div className="dashboard-issue-info">
+                    <div className="dashboard-issue-title">
                       {issue.title}
                     </div>
-                    <div style={{ fontSize: '0.725rem', color: '#64748b', marginTop: '2px' }}>
+                    <div className="dashboard-issue-meta">
                       {issue.siteName} • {issue.date}
                     </div>
                   </div>
-                  <div>{renderSeverityBadge(issue.severity)}</div>
+                  <div className="dashboard-issue-badge">
+                    {renderSeverityBadge(issue.severity)}
+                  </div>
                 </div>
               ))}
             </div>
