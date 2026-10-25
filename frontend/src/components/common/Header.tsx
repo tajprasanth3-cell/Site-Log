@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
   Search,
@@ -40,6 +40,24 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   } = useApp();
 
   const [showNotifications, setShowNotifications] = useState(false);
+  const notificationContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        notificationContainerRef.current &&
+        !notificationContainerRef.current.contains(event.target as Node)
+      ) {
+        setShowNotifications(false);
+      }
+    };
+    if (showNotifications) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showNotifications]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
@@ -243,6 +261,15 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
       </div>
 
       <div className="header-right">
+        {/* API Backend Connection Status Indicator */}
+        <div
+          className={`api-status-badge ${isBackendConnected ? 'connected' : 'offline'}`}
+          title={isBackendConnected ? 'Backend API connected (http://localhost:5000)' : 'Running on local cache (Backend offline)'}
+        >
+          <span className="api-status-dot" />
+          <span className="api-status-text">{isBackendConnected ? 'API Live' : 'Local'}</span>
+        </div>
+
         {/* Role Switcher */}
         <div className="role-switcher" title="Switch active perspective">
           <UserCheck size={14} />
@@ -262,17 +289,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           </div>
         </div>
 
-        {/* API Backend Connection Status Indicator */}
-        <div
-          className={`api-status-badge ${isBackendConnected ? 'connected' : 'offline'}`}
-          title={isBackendConnected ? 'Backend API connected (http://localhost:5000)' : 'Running on local cache (Backend offline)'}
-        >
-          <span className="api-status-dot" />
-          <span className="api-status-text">{isBackendConnected ? 'API Live' : 'Local'}</span>
-        </div>
-
         {/* Notifications */}
-        <div className="notification-container">
+        <div className="notification-container" ref={notificationContainerRef}>
           <button
             className="icon-btn"
             onClick={() => setShowNotifications(!showNotifications)}
@@ -286,15 +304,37 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
             <div className="notification-flyout">
               <div className="flyout-header">
                 <span>Notifications ({notifications.length})</span>
-                {notifications.length > 0 && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                  {notifications.length > 0 && (
+                    <button
+                      className="btn btn-sm btn-outline"
+                      style={{ fontSize: '0.7rem', padding: '0.15rem 0.45rem' }}
+                      onClick={clearAllNotifications}
+                    >
+                      Clear All
+                    </button>
+                  )}
                   <button
-                    className="btn btn-sm btn-outline"
-                    style={{ fontSize: '0.7rem', padding: '0.15rem 0.45rem' }}
-                    onClick={clearAllNotifications}
+                    type="button"
+                    className="flyout-close-btn"
+                    onClick={() => setShowNotifications(false)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'var(--text-muted)',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 'var(--radius-sm)',
+                    }}
+                    title="Close notifications"
+                    aria-label="Close notifications"
                   >
-                    Clear All
+                    <X size={16} />
                   </button>
-                )}
+                </div>
               </div>
 
               <div className="flyout-body">

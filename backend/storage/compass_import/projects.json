@@ -1,0 +1,67 @@
+[
+  {
+    "id": "PRJ-001",
+    "name": "Apartment Building",
+    "client": "ABC Construction",
+    "type": "Residential",
+    "startDate": "2026-01-10",
+    "expectedCompletionDate": "2027-04-30",
+    "location": "Chennai",
+    "projectManager": "Priya",
+    "status": "Active",
+    "description": "High-rise residential tower with 24 floors and modern amenities.",
+    "progress": 65
+  },
+  {
+    "id": "PRJ-002",
+    "name": "Office Complex",
+    "client": "XYZ Ltd",
+    "type": "Commercial",
+    "startDate": "2026-02-15",
+    "expectedCompletionDate": "2027-08-30",
+    "location": "Bengaluru",
+    "projectManager": "Priya",
+    "status": "Active",
+    "description": "Grade-A tech park development featuring 4 commercial blocks and solar roof.",
+    "progress": 40
+  },
+  {
+    "id": "PRJ-003",
+    "name": "Shopping Mall",
+    "client": "Retail Corp",
+    "type": "Commercial",
+    "startDate": "2025-06-01",
+    "expectedCompletionDate": "2026-09-15",
+    "location": "Hyderabad",
+    "projectManager": "Vikram Joshi",
+    "status": "Completed",
+    "description": "Multi-level retail shopping and entertainment hub with 3 underground parking floors.",
+    "progress": 100
+  },
+  {
+    "id": "PRJ-004",
+    "name": "Warehouse Hub",
+    "client": "Logistics Co",
+    "type": "Industrial",
+    "startDate": "2026-03-01",
+    "expectedCompletionDate": "2026-12-20",
+    "location": "Pune",
+    "projectManager": "Priya",
+    "status": "Active",
+    "description": "Automated logistics warehouse with heavy-duty reinforced concrete flooring.",
+    "progress": 20
+  },
+  {
+    "id": "PRJ-005",
+    "name": "Multi-Specialty Hospital",
+    "client": "Healthcare Ltd",
+    "type": "Institutional",
+    "startDate": "2026-05-01",
+    "expectedCompletionDate": "2028-01-15",
+    "location": "Mumbai",
+    "projectManager": "Vikram Joshi",
+    "status": "Planned",
+    "description": "500-bed state-of-the-art trauma center and research facility.",
+    "progress": 10
+  }
+]

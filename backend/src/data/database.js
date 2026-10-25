@@ -88,31 +88,31 @@ class Database {
   async syncWithMongoDB() {
     if (!isMongoConnected()) return;
 
-    try {
-      console.log('🔄 [MongoDB] Synchronizing collections with MongoDB Atlas...');
-      for (const [collectionName, Model] of Object.entries(COLLECTION_MODEL_MAP)) {
-        if (!Model) continue;
+    console.log('🔄 [MongoDB] Synchronizing collections...');
+    for (const [collectionName, Model] of Object.entries(COLLECTION_MODEL_MAP)) {
+      if (!Model) continue;
 
+      try {
         const count = await Model.countDocuments();
         if (count === 0 && Array.isArray(this.data[collectionName]) && this.data[collectionName].length > 0) {
-          // Seed MongoDB Atlas with initial data
+          // Seed MongoDB with local data
           await Model.insertMany(this.data[collectionName]);
-          console.log(`   ✓ Seeded ${this.data[collectionName].length} items into Atlas [${collectionName}]`);
+          console.log(`   ✓ Seeded ${this.data[collectionName].length} items into MongoDB [${collectionName}]`);
         } else if (count > 0) {
-          // Load latest records from MongoDB Atlas
+          // Load latest records from MongoDB
           const docs = await Model.find({}).lean();
           this.data[collectionName] = docs.map((d) => {
             const { _id, __v, ...rest } = d;
             return rest;
           });
-          console.log(`   ✓ Hydrated ${docs.length} items from Atlas [${collectionName}]`);
+          console.log(`   ✓ Hydrated ${docs.length} items from MongoDB [${collectionName}]`);
         }
+      } catch (err) {
+        console.error(`   ⚠️ Sync failed for [${collectionName}]:`, err.message);
       }
-      this.persist();
-      console.log('✅ [MongoDB] All collections in sync with MongoDB Atlas!');
-    } catch (err) {
-      console.error('⚠️ [MongoDB] Error during collection sync:', err.message);
     }
+    this.persist();
+    console.log('✅ [MongoDB] Collection sync complete!');
   }
 
   get(collection) {

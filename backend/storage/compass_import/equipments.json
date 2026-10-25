@@ -1,0 +1,62 @@
+[
+  {
+    "id": "EQP-001",
+    "name": "Tower Crane 50m Boom",
+    "type": "Heavy Lifting Crane",
+    "assignedSiteId": "SIT-001",
+    "assignedSiteName": "Site A - Tower Block 1",
+    "operator": "Ramesh Chandra",
+    "condition": "Good",
+    "maintenanceStatus": "OK",
+    "lastServiceDate": "2026-10-01",
+    "nextServiceDate": "2026-11-01"
+  },
+  {
+    "id": "EQP-002",
+    "name": "Hydraulic Excavator CAT 320D",
+    "type": "Earthmoving Excavator",
+    "assignedSiteId": "SIT-002",
+    "assignedSiteName": "Site B - Tech Pod Alpha",
+    "operator": "Suresh Kumar",
+    "condition": "Good",
+    "maintenanceStatus": "OK",
+    "lastServiceDate": "2026-09-28",
+    "nextServiceDate": "2026-10-28"
+  },
+  {
+    "id": "EQP-003",
+    "name": "Batch Concrete Mixer 10/7 CFT",
+    "type": "Mixing Machinery",
+    "assignedSiteId": "SIT-001",
+    "assignedSiteName": "Site A - Tower Block 1",
+    "operator": "Ganesh Das",
+    "condition": "Needs Repair",
+    "maintenanceStatus": "In Repair",
+    "lastServiceDate": "2026-09-15",
+    "nextServiceDate": "2026-10-15"
+  },
+  {
+    "id": "EQP-004",
+    "name": "Silent Diesel Generator 125 kVA",
+    "type": "Power Generation",
+    "assignedSiteId": "SIT-001",
+    "assignedSiteName": "Site A - Tower Block 1",
+    "operator": "Ajay Verma",
+    "condition": "Fair",
+    "maintenanceStatus": "Due",
+    "lastServiceDate": "2026-09-10",
+    "nextServiceDate": "2026-10-10"
+  },
+  {
+    "id": "EQP-005",
+    "name": "Wheel Loader Komatsu WA200",
+    "type": "Earthmoving Loader",
+    "assignedSiteId": "SIT-004",
+    "assignedSiteName": "Site D - Bay Area 1",
+    "operator": "Manoj Patil",
+    "condition": "Excellent",
+    "maintenanceStatus": "OK",
+    "lastServiceDate": "2026-10-12",
+    "nextServiceDate": "2026-11-12"
+  }
+]

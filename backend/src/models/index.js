@@ -112,14 +112,21 @@ const EquipmentSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   type: { type: String, default: 'Machinery' },
-  siteId: { type: String, required: true },
+  siteId: { type: String, default: '' },
   siteName: { type: String, default: '' },
+  assignedSiteId: { type: String, default: '' },
+  assignedSiteName: { type: String, default: '' },
+  operator: { type: String, default: '' },
   operatorName: { type: String, default: '' },
+  condition: { type: String, default: '' },
+  maintenanceStatus: { type: String, default: '' },
   status: { type: String, default: 'Operational' },
   totalHoursRun: { type: Number, default: 0 },
   fuelEfficiency: { type: String, default: '' },
   lastMaintenanceDate: { type: String },
+  lastServiceDate: { type: String },
   nextMaintenanceDue: { type: String },
+  nextServiceDate: { type: String },
 }, options);
 
 // 8. Equipment Usage Log Schema
@@ -158,15 +165,20 @@ const SafetyObservationSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
   siteId: { type: String, required: true },
   siteName: { type: String, default: '' },
-  title: { type: String, required: true },
+  title: { type: String, default: '' },
+  observation: { type: String, default: '' },
   description: { type: String, default: '' },
   type: { type: String, default: 'Hazard' },
   severity: { type: String, default: 'Medium' },
+  riskLevel: { type: String, default: 'Medium' },
+  location: { type: String, default: '' },
   status: { type: String, default: 'Reported' },
   reportedBy: { type: String, default: '' },
   date: { type: String },
   photograph: { type: String, default: '' },
   preventiveAction: { type: String, default: '' },
+  correctiveAction: { type: String, default: '' },
+  remarks: { type: String, default: '' },
 }, options);
 
 // 11. Photo Schema
@@ -191,6 +203,7 @@ const UserSchema = new mongoose.Schema({
   phone: { type: String, default: '' },
   avatar: { type: String, default: '' },
   assignedSites: { type: Array, default: [] },
+  assignedSiteIds: { type: Array, default: [] },
 }, options);
 
 // Export models

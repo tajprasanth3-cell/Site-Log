@@ -1,0 +1,44 @@
+[
+  {
+    "id": "USR-001",
+    "name": "Ashok",
+    "email": "ashok@sitelog.com",
+    "role": "site_engineer",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    "phone": "+91 98765 43210",
+    "assignedSiteIds": [
+      "SIT-001",
+      "SIT-002"
+    ]
+  },
+  {
+    "id": "USR-002",
+    "name": "Priya",
+    "email": "priya@sitelog.com",
+    "role": "project_manager",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80",
+    "phone": "+91 98765 43211",
+    "assignedSiteIds": [
+      "SIT-001",
+      "SIT-002",
+      "SIT-003",
+      "SIT-004",
+      "SIT-005"
+    ]
+  },
+  {
+    "id": "USR-003",
+    "name": "Arjun Mehta",
+    "email": "admin@sitelog.com",
+    "role": "admin",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    "phone": "+91 98765 43212",
+    "assignedSiteIds": [
+      "SIT-001",
+      "SIT-002",
+      "SIT-003",
+      "SIT-004",
+      "SIT-005"
+    ]
+  }
+]

@@ -18,17 +18,17 @@ export async function connectDB() {
   }
 
   try {
-    console.log('⏳ Connecting to MongoDB Atlas...');
+    console.log('⏳ Connecting to MongoDB...');
     const conn = await mongoose.connect(config.mongoUri, {
       serverSelectionTimeoutMS: 6000,
       connectTimeoutMS: 6000,
     });
     isConnected = true;
-    console.log(`🍃 Connected to MongoDB Atlas! Host: ${conn.connection.host}`);
+    console.log(`🍃 Connected to MongoDB! Host: ${conn.connection.host}`);
     return true;
   } catch (error) {
     isConnected = false;
-    console.warn('\n⚠️  MongoDB Atlas Connection Warning:');
+    console.warn('\n⚠️  MongoDB Connection Warning:');
     if (error.message.includes('whitelist') || error.message.includes('Could not connect to any servers')) {
       console.warn('👉 Your current IP address is not whitelisted in MongoDB Atlas.');
       console.warn('👉 To allow access from your current network:');

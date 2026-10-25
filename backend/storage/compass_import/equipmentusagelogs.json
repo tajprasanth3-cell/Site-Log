@@ -1,0 +1,14 @@
+[
+  {
+    "id": "EUL-001",
+    "equipmentId": "EQP-001",
+    "equipmentName": "Tower Crane 50m Boom",
+    "siteId": "SIT-001",
+    "date": "2026-10-19",
+    "startTime": "08:30",
+    "endTime": "16:00",
+    "durationHours": 7.5,
+    "purpose": "Lifting rebar and precast materials",
+    "remarks": "Smooth operation"
+  }
+]

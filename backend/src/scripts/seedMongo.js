@@ -10,11 +10,11 @@ try {
   dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
 } catch (e) {}
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://tajprasanth3_db_user:sitelog@cluster0.aevi79z.mongodb.net/sitelog?retryWrites=true&w=majority';
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/sitelog';
 
 console.log('====================================================');
-console.log('🍃 Starting MongoDB Atlas Seeder for SiteLog...');
-console.log('🎯 Target Cluster:', mongoUri.split('@')[1] ? mongoUri.split('@')[1].split('/')[0] : 'cluster0');
+console.log('🍃 Starting MongoDB Seeder for SiteLog...');
+console.log('🎯 Target Database:', mongoUri.split('/').pop().split('?')[0] || 'sitelog');
 console.log('====================================================');
 
 const MAPPINGS = [
@@ -34,7 +34,7 @@ const MAPPINGS = [
 
 async function seed() {
   try {
-    console.log('⏳ Connecting to MongoDB Atlas...');
+    console.log('⏳ Connecting to MongoDB...');
     await mongoose.connect(mongoUri, { serverSelectionTimeoutMS: 10000 });
     console.log('✅ Connected successfully to database: sitelog');
 
@@ -50,7 +50,7 @@ async function seed() {
       }
     }
 
-    console.log('\n🎉 ALL COLLECTIONS READY in MongoDB Atlas!');
+    console.log('\n🎉 ALL COLLECTIONS READY in MongoDB!');
     console.log('👉 Open MongoDB Compass, click Refresh, and you will see the "sitelog" database with all collections populated!\n');
     await mongoose.disconnect();
     process.exit(0);

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "WKR-001",
+    "name": "Ramesh Kumar",
+    "trade": "Mason",
+    "contractor": "Apex Build Infra",
+    "skill": "Master Craftsman",
+    "contact": "+91 91234 56789",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Present"
+  },
+  {
+    "id": "WKR-002",
+    "name": "Suresh Patel",
+    "trade": "Electrician",
+    "contractor": "Apex Build Infra",
+    "skill": "Skilled",
+    "contact": "+91 92345 67890",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Absent"
+  },
+  {
+    "id": "WKR-003",
+    "name": "Ajay Singh",
+    "trade": "Carpenter",
+    "contractor": "Shree Formwork Ltd",
+    "skill": "Skilled",
+    "contact": "+91 93456 78901",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Half Day"
+  },
+  {
+    "id": "WKR-004",
+    "name": "Vikram Rao",
+    "trade": "Helper",
+    "contractor": "Apex Build Infra",
+    "skill": "Unskilled",
+    "contact": "+91 94567 89012",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Present"
+  },
+  {
+    "id": "WKR-005",
+    "name": "Manoj Das",
+    "trade": "Welder",
+    "contractor": "SteelFab Tech",
+    "skill": "Master Craftsman",
+    "contact": "+91 95678 90123",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Present"
+  },
+  {
+    "id": "WKR-006",
+    "name": "Santosh Yadav",
+    "trade": "Bar Bender",
+    "contractor": "SteelFab Tech",
+    "skill": "Skilled",
+    "contact": "+91 96789 01234",
+    "siteId": "SIT-001",
+    "status": "Active",
+    "todayAttendance": "Present"
+  },
+  {
+    "id": "WKR-007",
+    "name": "Deepak Sharma",
+    "trade": "Plumber",
+    "contractor": "FlowTech MEP",
+    "skill": "Skilled",
+    "contact": "+91 97890 12345",
+    "siteId": "SIT-002",
+    "status": "Active",
+    "todayAttendance": "Leave"
+  },
+  {
+    "id": "WKR-008",
+    "name": "Sunil Verma",
+    "trade": "Surveyor",
+    "contractor": "GeoPrecise",
+    "skill": "Master Craftsman",
+    "contact": "+91 98901 23456",
+    "siteId": "SIT-002",
+    "status": "Active",
+    "todayAttendance": "Present"
+  }
+]

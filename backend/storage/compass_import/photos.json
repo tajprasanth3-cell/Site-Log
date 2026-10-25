@@ -1,0 +1,32 @@
+[
+  {
+    "id": "PHT-001",
+    "url": "https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=600&q=80",
+    "title": "Site A - High-Rise Tower Slab Casting & Framing",
+    "projectId": "PRJ-001",
+    "projectName": "Apartment Building",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "category": "Work Progress",
+    "dateTime": "2026-10-19 11:30",
+    "takenAt": "2026-10-19 11:15",
+    "uploadedAt": "2026-10-19 11:30",
+    "description": "Active multi-story floor slab concrete framework with workers, safety railings, and tower crane operations.",
+    "uploadedBy": "Ashok"
+  },
+  {
+    "id": "PHT-002",
+    "url": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80",
+    "title": "Site B - Deep Raft Foundation & Boom Pump Pour",
+    "projectId": "PRJ-002",
+    "projectName": "Office Complex",
+    "siteId": "SIT-002",
+    "siteName": "Site B - Tech Pod Alpha",
+    "category": "Work Progress",
+    "dateTime": "2026-10-18 14:15",
+    "takenAt": "2026-10-18 13:50",
+    "uploadedAt": "2026-10-18 14:15",
+    "description": "Reinforcement grid foundation pit under clear skies with concrete pump truck and excavator fleet.",
+    "uploadedBy": "Ashok"
+  }
+]

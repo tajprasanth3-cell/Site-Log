@@ -1,0 +1,43 @@
+[
+  {
+    "id": "SFT-001",
+    "observation": "Scaffolding edge barrier on 14th floor perimeter needs additional mid-rail.",
+    "riskLevel": "High",
+    "location": "Tower 1, 14th Floor South Face",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "date": "2026-10-19",
+    "photograph": "https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=600&q=80",
+    "correctiveAction": "Formwork carpentry team dispatched to secure double handrails immediately.",
+    "status": "Action Taken",
+    "remarks": "Inspected by Site Engineer Ashok. Yellow warning tape placed.",
+    "reportedBy": "Ashok"
+  },
+  {
+    "id": "SFT-002",
+    "observation": "Exposed temporary power cabling passing through wet mud near wash pit.",
+    "riskLevel": "Critical",
+    "location": "Basement Entry Ramp",
+    "siteId": "SIT-002",
+    "siteName": "Site B - Tech Pod Alpha",
+    "date": "2026-10-18",
+    "photograph": "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80",
+    "correctiveAction": "Electrician routed cables through elevated PVC conduit overhead.",
+    "status": "Resolved",
+    "remarks": "Circuit tested with RCD trip test. Clear for use.",
+    "reportedBy": "Ashok"
+  },
+  {
+    "id": "SFT-003",
+    "observation": "First aid box at site security office missing antiseptic ointment and eye-wash bottles.",
+    "riskLevel": "Low",
+    "location": "Site Gate 1 Security Cabin",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "date": "2026-10-16",
+    "correctiveAction": "Replenished medical kit with new standard checklist compliance.",
+    "status": "Resolved",
+    "remarks": "Routine weekly audit item closed.",
+    "reportedBy": "Ashok"
+  }
+]

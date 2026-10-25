@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ISS-001",
+    "title": "Equipment breakdown - Concrete mixer hydraulic pump failure",
+    "description": "Mixer stopped during afternoon mortar preparation. Oil pressure loss detected.",
+    "category": "Equipment failure",
+    "severity": "High",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "reportedBy": "Ashok",
+    "date": "2026-10-19",
+    "photographs": [
+      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80"
+    ],
+    "assignedPerson": "Maintenance Engineer Ganesh",
+    "status": "In Progress"
+  },
+  {
+    "id": "ISS-002",
+    "title": "Cement shortage delay for Tower B masonry",
+    "description": "Supplier truck delayed by 8 hours due to highway transit check.",
+    "category": "Material shortage",
+    "severity": "Medium",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "reportedBy": "Ashok",
+    "date": "2026-10-18",
+    "photographs": [],
+    "assignedPerson": "Procurement Officer",
+    "status": "Resolved",
+    "resolution": "Alternative stock drawn from central depot; truck arrived at 6 PM.",
+    "resolvedDate": "2026-10-18"
+  },
+  {
+    "id": "ISS-003",
+    "title": "Safety concern - Subcontractor workers missing safety harness at Level 14 edge",
+    "description": "During scaffolding check, 2 workers observed near opening without tie-off harness.",
+    "category": "Safety",
+    "severity": "Critical",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "reportedBy": "Ashok",
+    "date": "2026-10-19",
+    "photographs": [
+      "https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=600&q=80"
+    ],
+    "assignedPerson": "Site Safety Supervisor",
+    "status": "Open"
+  },
+  {
+    "id": "ISS-004",
+    "title": "Delivery delay of structural bolts",
+    "description": "Special grade galvanized bolts consignment delayed by vendor.",
+    "category": "Delivery delay",
+    "severity": "Low",
+    "siteId": "SIT-004",
+    "siteName": "Site D - Bay Area 1",
+    "reportedBy": "Karan Singh",
+    "date": "2026-10-17",
+    "photographs": [],
+    "assignedPerson": "Vendor Support",
+    "status": "Closed",
+    "resolution": "Consignment cleared and received on site.",
+    "resolvedDate": "2026-10-18"
+  }
+]

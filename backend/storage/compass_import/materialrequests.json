@@ -1,0 +1,31 @@
+[
+  {
+    "id": "MR-001",
+    "materialName": "TMT Steel 20mm Fe500D",
+    "quantity": 18,
+    "unit": "MT",
+    "requiredDate": "2026-10-25",
+    "reason": "Columns reinforcement for 15th slab casting.",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "requestingEngineerId": "USR-001",
+    "requestingEngineerName": "Ashok",
+    "status": "Pending Review",
+    "createdAt": "2026-10-19"
+  },
+  {
+    "id": "MR-002",
+    "materialName": "PVC Electrical Conduits (25mm)",
+    "quantity": 350,
+    "unit": "meters",
+    "requiredDate": "2026-10-22",
+    "reason": "Slab embedding before concrete pour.",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "requestingEngineerId": "USR-001",
+    "requestingEngineerName": "Ashok",
+    "status": "Approved",
+    "managerRemarks": "Approved for supplier dispatch tomorrow morning.",
+    "createdAt": "2026-10-18"
+  }
+]

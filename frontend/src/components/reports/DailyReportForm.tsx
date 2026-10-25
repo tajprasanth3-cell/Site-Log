@@ -911,8 +911,8 @@ export const DailyReportForm: React.FC = () => {
 
         {/* Section 5: Photographs Attachment Preview */}
         <div className="card" style={{ boxShadow: '0 4px 14px rgba(0,0,0,0.06)' }}>
-          <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-            <div className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="card-header report-photo-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div className="card-title report-photo-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <div style={{ background: '#fff7ed', padding: '6px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Camera size={20} color="#f97316" />
               </div>
@@ -923,7 +923,7 @@ export const DailyReportForm: React.FC = () => {
                 </span>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div className="report-photo-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <span className="badge badge-neutral" style={{ fontWeight: 600, padding: '4px 10px', fontSize: '0.8rem' }}>
                 {attachedPhotos.length} {attachedPhotos.length === 1 ? 'Photo' : 'Photos'} Attached
               </span>

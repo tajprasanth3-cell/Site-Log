@@ -177,6 +177,7 @@ export const WorkersView: React.FC = () => {
                     <td>
                       <button
                         type="button"
+                        className="attendance-toggle"
                         onClick={() => cycleAttendance(w)}
                         style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                         title="Click to cycle attendance status"

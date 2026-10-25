@@ -1,0 +1,141 @@
+[
+  {
+    "id": "DSR-2026-001",
+    "siteId": "SIT-001",
+    "siteName": "Site A - Tower Block 1",
+    "projectId": "PRJ-001",
+    "projectName": "Apartment Building",
+    "date": "2026-10-19",
+    "engineerId": "USR-001",
+    "engineerName": "Ashok",
+    "workingHours": "08:00 - 17:30",
+    "weatherCondition": "Sunny",
+    "status": "Submitted",
+    "workersSummary": {
+      "total": 30,
+      "present": 25,
+      "absent": 3,
+      "halfDay": 1,
+      "leave": 1
+    },
+    "workProgress": [
+      {
+        "id": "WP-01",
+        "category": "Concrete Work",
+        "description": "Level 14 slab column reinforcement & beam formwork",
+        "plannedQty": 100,
+        "completedQty": 65,
+        "unit": "m³",
+        "progressPercentage": 65,
+        "status": "In Progress",
+        "remarks": "Pouring schedule fixed for tomorrow morning 7:00 AM."
+      },
+      {
+        "id": "WP-02",
+        "category": "Masonry Work",
+        "description": "10th floor internal partition brick walls",
+        "plannedQty": 150,
+        "completedQty": 110,
+        "unit": "m²",
+        "progressPercentage": 73,
+        "status": "In Progress",
+        "remarks": "Mortar consistency checked with slump cone test."
+      },
+      {
+        "id": "WP-03",
+        "category": "Electrical Work",
+        "description": "Conduit laying for 12th floor lighting circuits",
+        "plannedQty": 80,
+        "completedQty": 80,
+        "unit": "points",
+        "progressPercentage": 100,
+        "status": "Completed",
+        "remarks": "Testing passed without insulation defects."
+      }
+    ],
+    "materialsUsed": [
+      {
+        "materialId": "MAT-001",
+        "materialName": "Cement (OPC 53)",
+        "quantityUsed": 40,
+        "unit": "bags"
+      },
+      {
+        "materialId": "MAT-002",
+        "materialName": "TMT Steel 16mm",
+        "quantityUsed": 15,
+        "unit": "MT"
+      },
+      {
+        "materialId": "MAT-003",
+        "materialName": "River Sand",
+        "quantityUsed": 14,
+        "unit": "m³"
+      }
+    ],
+    "equipmentUsed": [
+      {
+        "equipmentId": "EQP-001",
+        "equipmentName": "Tower Crane 50m Boom",
+        "hoursUsed": 7.5,
+        "purpose": "Lifting rebar bundles & shuttering ply to 14th floor."
+      },
+      {
+        "equipmentId": "EQP-004",
+        "equipmentName": "Silent Diesel Generator 125 kVA",
+        "hoursUsed": 4,
+        "purpose": "Backup power for bar cutting machine during grid power cut."
+      }
+    ],
+    "siteObservations": "Good site orderliness. Concrete batching plant calibration verified.",
+    "problemsEncountered": "Brief power fluctuation between 11:30 AM and 12:45 PM; switched to DG set.",
+    "safetyObservations": "Perimeter railing tightened on 14th floor. 2 warnings issued for harness tie-off.",
+    "generalRemarks": "Shift completed on schedule without major hindrance.",
+    "photographs": [
+      "PHT-001"
+    ],
+    "reviewHistory": [
+      {
+        "id": "REV-01",
+        "reviewerId": "USR-002",
+        "reviewerName": "Priya",
+        "date": "2026-10-19 12:00",
+        "action": "Comment",
+        "comment": "Please ensure slump cone test cylinder cubes are cast and cured for 7 and 28 days."
+      }
+    ],
+    "createdAt": "2026-10-19 16:30",
+    "updatedAt": "2026-10-19 17:00"
+  },
+  {
+    "id": "DSR-2026-002",
+    "siteId": "SIT-002",
+    "siteName": "Site B - Tech Pod Alpha",
+    "projectId": "PRJ-002",
+    "projectName": "Office Complex",
+    "date": "2026-10-19",
+    "engineerId": "USR-001",
+    "engineerName": "Ashok",
+    "workingHours": "08:00 - 17:00",
+    "weatherCondition": "Overcast",
+    "status": "Draft",
+    "workersSummary": {
+      "total": 22,
+      "present": 20,
+      "absent": 2,
+      "halfDay": 0,
+      "leave": 0
+    },
+    "workProgress": [],
+    "materialsUsed": [],
+    "equipmentUsed": [],
+    "siteObservations": "Basement dewatering running smoothly.",
+    "problemsEncountered": "",
+    "safetyObservations": "All excavation pits barricaded with reflective flags.",
+    "generalRemarks": "Earthmoving on track.",
+    "photographs": [],
+    "reviewHistory": [],
+    "createdAt": "2026-10-19 10:00",
+    "updatedAt": "2026-10-19 10:00"
+  }
+]

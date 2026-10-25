@@ -227,6 +227,7 @@ export const LoginPage: React.FC = () => {
                 />
                 <button
                   type="button"
+                  className="login-eye-btn"
                   onClick={() => setShowPassword(!showPassword)}
                   style={{
                     position: 'absolute',
@@ -257,10 +258,11 @@ export const LoginPage: React.FC = () => {
                 />
                 <span>Remember me</span>
               </label>
-              <button
-                type="button"
-                onClick={handleOpenForgotModal}
-                style={{
+                <button
+                  type="button"
+                  className="login-forgot-link"
+                  onClick={handleOpenForgotModal}
+                  style={{
                   background: 'none',
                   border: 'none',
                   color: '#f97316',

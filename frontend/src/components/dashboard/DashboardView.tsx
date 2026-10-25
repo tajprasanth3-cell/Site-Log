@@ -173,12 +173,12 @@ export const DashboardView: React.FC = () => {
         <div className="dashboard-col dashboard-col-main">
           {/* Project Progress Donut Widget */}
           <div className="card dashboard-card progress-donut-card">
-            <div className="card-header dashboard-card-header">
-              <div className="card-title">
-                <TrendingUp size={18} color="#f97316" />
-                <span>Overall Project Progress</span>
+            <div className="card-header dashboard-card-header" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap', width: '100%', gap: '0.5rem' }}>
+              <div className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0, flex: '1 1 auto', overflow: 'hidden' }}>
+                <TrendingUp size={18} color="#f97316" style={{ flexShrink: 0 }} />
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Overall Project Progress</span>
               </div>
-              <span className="badge badge-success">On Schedule</span>
+              <span className="badge badge-success" style={{ flexShrink: 0, whiteSpace: 'nowrap', marginLeft: 'auto' }}>On Schedule</span>
             </div>
             <div className="card-body">
               <div className="progress-donut-container">
@@ -237,13 +237,14 @@ export const DashboardView: React.FC = () => {
 
           {/* Recent Site Reports */}
           <div className="card dashboard-card recent-reports-card">
-            <div className="card-header dashboard-card-header">
-              <div className="card-title">
-                <FileText size={18} color="#2563eb" />
-                <span>Recent Daily Site Reports</span>
+            <div className="card-header dashboard-card-header" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap', width: '100%', gap: '0.5rem' }}>
+              <div className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0, flex: '1 1 auto', overflow: 'hidden' }}>
+                <FileText size={18} color="#2563eb" style={{ flexShrink: 0 }} />
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Recent Daily Site Reports</span>
               </div>
               <button
                 className="btn btn-sm btn-outline"
+                style={{ flexShrink: 0, whiteSpace: 'nowrap', marginLeft: 'auto' }}
                 onClick={() => setActiveSection('daily-reports')}
               >
                 View all &rarr;
@@ -367,13 +368,14 @@ export const DashboardView: React.FC = () => {
 
           {/* Recent Issues Card (Mockup 2) */}
           <div className="card dashboard-card recent-issues-card">
-            <div className="card-header dashboard-card-header">
-              <div className="card-title">
-                <AlertTriangle size={18} color="#ef4444" />
-                <span>Recent Issues</span>
+            <div className="card-header dashboard-card-header" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap', width: '100%', gap: '0.5rem' }}>
+              <div className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0, flex: '1 1 auto', overflow: 'hidden' }}>
+                <AlertTriangle size={18} color="#ef4444" style={{ flexShrink: 0 }} />
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Recent Issues</span>
               </div>
               <button
                 className="btn btn-sm btn-outline"
+                style={{ flexShrink: 0, whiteSpace: 'nowrap', marginLeft: 'auto' }}
                 onClick={() => setActiveSection('issues')}
               >
                 View all &rarr;

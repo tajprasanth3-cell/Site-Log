@@ -1,0 +1,72 @@
+[
+  {
+    "id": "MAT-001",
+    "name": "Cement (OPC 53 Grade)",
+    "category": "Binding Material",
+    "unit": "bags",
+    "openingQty": 500,
+    "receivedQty": 100,
+    "usedQty": 40,
+    "remainingQty": 560,
+    "supplier": "UltraTech Corp",
+    "deliveryDate": "2026-10-18",
+    "siteId": "SIT-001",
+    "remarks": "Stack stored inside waterproof covered shed."
+  },
+  {
+    "id": "MAT-002",
+    "name": "TMT Reinforcement Steel (16mm Fe500D)",
+    "category": "Steel & Metals",
+    "unit": "MT",
+    "openingQty": 120,
+    "receivedQty": 25,
+    "usedQty": 15,
+    "remainingQty": 130,
+    "supplier": "Tata Steel",
+    "deliveryDate": "2026-10-17",
+    "siteId": "SIT-001",
+    "remarks": "Mill test certificates verified by structural consultant."
+  },
+  {
+    "id": "MAT-003",
+    "name": "River Sand (M-Sand Fine)",
+    "category": "Aggregates",
+    "unit": "m³",
+    "openingQty": 80,
+    "receivedQty": 30,
+    "usedQty": 14,
+    "remainingQty": 96,
+    "supplier": "Local Quarry Supplier",
+    "deliveryDate": "2026-10-18",
+    "siteId": "SIT-001",
+    "remarks": "Silt content tested under 4%. Good grading."
+  },
+  {
+    "id": "MAT-004",
+    "name": "Clay Red Bricks (Class 1)",
+    "category": "Masonry",
+    "unit": "pcs",
+    "openingQty": 5000,
+    "receivedQty": 2000,
+    "usedQty": 1500,
+    "remainingQty": 5500,
+    "supplier": "Standard Brick Kilns",
+    "deliveryDate": "2026-10-16",
+    "siteId": "SIT-001",
+    "remarks": "Compressive strength batch report verified."
+  },
+  {
+    "id": "MAT-005",
+    "name": "Ready Mix Concrete M30",
+    "category": "Concrete",
+    "unit": "m³",
+    "openingQty": 0,
+    "receivedQty": 48,
+    "usedQty": 48,
+    "remainingQty": 0,
+    "supplier": "RMC Readymix Solutions",
+    "deliveryDate": "2026-10-19",
+    "siteId": "SIT-001",
+    "remarks": "Batch pour completed for 14th floor perimeter beam."
+  }
+]

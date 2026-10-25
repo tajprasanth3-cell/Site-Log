@@ -106,6 +106,7 @@ interface AppContextType {
 
   toasts: Toast[];
   showToast: (message: string, type?: 'success' | 'error' | 'info') => void;
+  removeToast: (id: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -248,12 +249,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => saveToStorage('photos', photos), [photos]);
   useEffect(() => saveToStorage('notifications', notifications), [notifications]);
 
+    const removeToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
-    const id = Date.now().toString();
+    const id = Date.now().toString() + Math.random().toString(36).slice(2, 6);
     setToasts((prev) => [...prev, { id, message, type }]);
     setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 4000);
+      removeToast(id);
+    }, 5000);
   };
 
   const login = (email: string, role?: UserRole) => {
@@ -740,6 +745,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         clearAllNotifications,
         toasts,
         showToast,
+        removeToast,
       }}
     >
       {children}
