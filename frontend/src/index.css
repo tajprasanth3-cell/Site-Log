@@ -968,13 +968,13 @@ body {
 }
 
 .card-header {
-  padding: 1.1rem 1.35rem;
+  padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  gap: 0.65rem;
+  flex-wrap: nowrap;
 }
 
 .card-title {
@@ -984,6 +984,14 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card-title span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-body {
@@ -1251,38 +1259,51 @@ body {
 }
 
 .dashboard-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
   flex-wrap: nowrap !important;
-  width: 100%;
-  min-width: 0;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0.85rem 1.15rem !important;
 }
 
 .dashboard-card-header .card-title {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.dashboard-card-header .card-title svg {
+  flex-shrink: 0 !important;
 }
 
 .dashboard-card-header .card-title span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.2 !important;
 }
 
 .dashboard-card-header .btn,
 .dashboard-card-header .badge {
   flex-shrink: 0 !important;
   white-space: nowrap !important;
-  margin-left: auto !important;
-  padding: 0.28rem 0.65rem !important;
+  margin: 0 0 0 auto !important;
+  padding: 0 0.65rem !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
 }
@@ -3341,8 +3362,13 @@ body {
   .progress-donut-card .badge {
     flex-shrink: 0 !important;
     white-space: nowrap !important;
-    margin-left: auto !important;
-    padding: 0.22rem 0.55rem !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 0.55rem !important;
+    height: 26px !important;
+    min-height: 26px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 0.72rem !important;
   }
 
