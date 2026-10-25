@@ -17,4 +17,4 @@ services:
       - key: CLIENT_URL
         value: "*"
       - key: MONGODB_URI
-        value: mongodb+srv://tajprasanth3_db_user:sitelog@cluster0.aevi79z.mongodb.net/sitelog?retryWrites=true&w=majority
+        value: mongodb+srv://tajprasanth3_db_user:SiteLog2026@cluster0.aevi79z.mongodb.net/sitelog?retryWrites=true&w=majority
