@@ -142,6 +142,8 @@
       "activeIssues": 0,
       "todayReportStatus": "Pending",
       "image": "",
+      "createdAt": "2026-10-25T09:07:07.811Z",
+      "updatedAt": "2026-10-25T09:07:07.811Z",
       "projectName": "Apartment Building",
       "gpsCoordinates": "12.9716° N, 80.2435° E",
       "engineerId": "USR-001",
@@ -149,9 +151,7 @@
       "currentPhase": "Superstructure Level 14",
       "startDate": "2026-01-15",
       "expectedCompletionDate": "2027-04-30",
-      "notes": "Tower A RCC columns casting in progress, shuttering for 15th slab underway.",
-      "createdAt": "2026-10-25T09:07:07.811Z",
-      "updatedAt": "2026-10-25T09:07:07.811Z"
+      "notes": "Tower A RCC columns casting in progress, shuttering for 15th slab underway."
     },
     {
       "id": "SIT-002",
@@ -165,6 +165,8 @@
       "activeIssues": 0,
       "todayReportStatus": "Pending",
       "image": "",
+      "createdAt": "2026-10-25T09:07:07.812Z",
+      "updatedAt": "2026-10-25T09:07:07.812Z",
       "projectName": "Office Complex",
       "gpsCoordinates": "12.9698° N, 77.7500° E",
       "engineerId": "USR-001",
@@ -172,9 +174,7 @@
       "currentPhase": "Basement 2 Excavation & Raft Foundation",
       "startDate": "2026-02-20",
       "expectedCompletionDate": "2027-08-30",
-      "notes": "Dewatering pumps active. Soil stabilization ongoing on western boundary.",
-      "createdAt": "2026-10-25T09:07:07.812Z",
-      "updatedAt": "2026-10-25T09:07:07.812Z"
+      "notes": "Dewatering pumps active. Soil stabilization ongoing on western boundary."
     },
     {
       "id": "SIT-003",
@@ -188,6 +188,8 @@
       "activeIssues": 0,
       "todayReportStatus": "Pending",
       "image": "",
+      "createdAt": "2026-10-25T09:07:07.812Z",
+      "updatedAt": "2026-10-25T09:07:07.812Z",
       "projectName": "Shopping Mall",
       "gpsCoordinates": "17.4474° N, 78.3762° E",
       "engineerId": "USR-004",
@@ -195,9 +197,7 @@
       "currentPhase": "Interior Finishing & MEP Handover",
       "startDate": "2025-06-10",
       "expectedCompletionDate": "2026-09-15",
-      "notes": "Final fire safety inspection passed. Snag list closure in progress.",
-      "createdAt": "2026-10-25T09:07:07.812Z",
-      "updatedAt": "2026-10-25T09:07:07.812Z"
+      "notes": "Final fire safety inspection passed. Snag list closure in progress."
     },
     {
       "id": "SIT-004",
@@ -211,6 +211,8 @@
       "activeIssues": 0,
       "todayReportStatus": "Pending",
       "image": "",
+      "createdAt": "2026-10-25T09:07:07.812Z",
+      "updatedAt": "2026-10-25T09:07:07.812Z",
       "projectName": "Warehouse Hub",
       "gpsCoordinates": "18.7606° N, 73.8611° E",
       "engineerId": "USR-005",
@@ -218,9 +220,7 @@
       "currentPhase": "Pre-Engineered Building Structure Erection",
       "startDate": "2026-03-05",
       "expectedCompletionDate": "2026-12-20",
-      "notes": "Steel truss shipments arriving next Monday.",
-      "createdAt": "2026-10-25T09:07:07.812Z",
-      "updatedAt": "2026-10-25T09:07:07.812Z"
+      "notes": "Steel truss shipments arriving next Monday."
     },
     {
       "id": "SIT-005",
@@ -234,6 +234,8 @@
       "activeIssues": 0,
       "todayReportStatus": "Pending",
       "image": "",
+      "createdAt": "2026-10-25T09:07:07.813Z",
+      "updatedAt": "2026-10-25T09:07:07.813Z",
       "projectName": "Multi-Specialty Hospital",
       "gpsCoordinates": "19.0330° N, 73.0297° E",
       "engineerId": "USR-005",
@@ -241,9 +243,7 @@
       "currentPhase": "Piling & Substructure Earthwork",
       "startDate": "2026-05-10",
       "expectedCompletionDate": "2028-01-15",
-      "notes": "Environmental clearance obtained. Piling rig #2 operational.",
-      "createdAt": "2026-10-25T09:07:07.813Z",
-      "updatedAt": "2026-10-25T09:07:07.813Z"
+      "notes": "Environmental clearance obtained. Piling rig #2 operational."
     }
   ],
   "workers": [
@@ -257,11 +257,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Present",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "Apex Build Infra",
       "skill": "Master Craftsman",
-      "contact": "+91 91234 56789",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 91234 56789"
     },
     {
       "id": "WKR-002",
@@ -273,11 +273,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Absent",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "Apex Build Infra",
       "skill": "Skilled",
-      "contact": "+91 92345 67890",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 92345 67890"
     },
     {
       "id": "WKR-003",
@@ -289,11 +289,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Half Day",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "Shree Formwork Ltd",
       "skill": "Skilled",
-      "contact": "+91 93456 78901",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 93456 78901"
     },
     {
       "id": "WKR-004",
@@ -305,11 +305,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Present",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "Apex Build Infra",
       "skill": "Unskilled",
-      "contact": "+91 94567 89012",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 94567 89012"
     },
     {
       "id": "WKR-005",
@@ -321,11 +321,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Present",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "SteelFab Tech",
       "skill": "Master Craftsman",
-      "contact": "+91 95678 90123",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 95678 90123"
     },
     {
       "id": "WKR-006",
@@ -337,11 +337,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Present",
+      "createdAt": "2026-10-25T09:07:07.854Z",
+      "updatedAt": "2026-10-25T09:07:07.854Z",
       "contractor": "SteelFab Tech",
       "skill": "Skilled",
-      "contact": "+91 96789 01234",
-      "createdAt": "2026-10-25T09:07:07.854Z",
-      "updatedAt": "2026-10-25T09:07:07.854Z"
+      "contact": "+91 96789 01234"
     },
     {
       "id": "WKR-007",
@@ -353,11 +353,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Leave",
+      "createdAt": "2026-10-25T09:07:07.855Z",
+      "updatedAt": "2026-10-25T09:07:07.855Z",
       "contractor": "FlowTech MEP",
       "skill": "Skilled",
-      "contact": "+91 97890 12345",
-      "createdAt": "2026-10-25T09:07:07.855Z",
-      "updatedAt": "2026-10-25T09:07:07.855Z"
+      "contact": "+91 97890 12345"
     },
     {
       "id": "WKR-008",
@@ -369,11 +369,11 @@
       "phone": "",
       "status": "Active",
       "todayAttendance": "Present",
+      "createdAt": "2026-10-25T09:07:07.855Z",
+      "updatedAt": "2026-10-25T09:07:07.855Z",
       "contractor": "GeoPrecise",
       "skill": "Master Craftsman",
-      "contact": "+91 98901 23456",
-      "createdAt": "2026-10-25T09:07:07.855Z",
-      "updatedAt": "2026-10-25T09:07:07.855Z"
+      "contact": "+91 98901 23456"
     }
   ],
   "materials": [
@@ -388,14 +388,14 @@
       "minimumThreshold": 10,
       "reorderQuantity": 50,
       "supplier": "UltraTech Corp",
+      "createdAt": "2026-10-25T09:07:07.867Z",
+      "updatedAt": "2026-10-25T09:07:07.867Z",
       "openingQty": 500,
       "receivedQty": 100,
       "usedQty": 40,
       "remainingQty": 560,
       "deliveryDate": "2026-10-18",
-      "remarks": "Stack stored inside waterproof covered shed.",
-      "createdAt": "2026-10-25T09:07:07.867Z",
-      "updatedAt": "2026-10-25T09:07:07.867Z"
+      "remarks": "Stack stored inside waterproof covered shed."
     },
     {
       "id": "MAT-002",
@@ -408,14 +408,14 @@
       "minimumThreshold": 10,
       "reorderQuantity": 50,
       "supplier": "Tata Steel",
+      "createdAt": "2026-10-25T09:07:07.867Z",
+      "updatedAt": "2026-10-25T09:07:07.867Z",
       "openingQty": 120,
       "receivedQty": 25,
       "usedQty": 15,
       "remainingQty": 130,
       "deliveryDate": "2026-10-17",
-      "remarks": "Mill test certificates verified by structural consultant.",
-      "createdAt": "2026-10-25T09:07:07.867Z",
-      "updatedAt": "2026-10-25T09:07:07.867Z"
+      "remarks": "Mill test certificates verified by structural consultant."
     },
     {
       "id": "MAT-003",
@@ -428,14 +428,14 @@
       "minimumThreshold": 10,
       "reorderQuantity": 50,
       "supplier": "Local Quarry Supplier",
+      "createdAt": "2026-10-25T09:07:07.867Z",
+      "updatedAt": "2026-10-25T09:07:07.867Z",
       "openingQty": 80,
       "receivedQty": 30,
       "usedQty": 14,
       "remainingQty": 96,
       "deliveryDate": "2026-10-18",
-      "remarks": "Silt content tested under 4%. Good grading.",
-      "createdAt": "2026-10-25T09:07:07.867Z",
-      "updatedAt": "2026-10-25T09:07:07.867Z"
+      "remarks": "Silt content tested under 4%. Good grading."
     },
     {
       "id": "MAT-004",
@@ -448,14 +448,14 @@
       "minimumThreshold": 10,
       "reorderQuantity": 50,
       "supplier": "Standard Brick Kilns",
+      "createdAt": "2026-10-25T09:07:07.867Z",
+      "updatedAt": "2026-10-25T09:07:07.867Z",
       "openingQty": 5000,
       "receivedQty": 2000,
       "usedQty": 1500,
       "remainingQty": 5500,
       "deliveryDate": "2026-10-16",
-      "remarks": "Compressive strength batch report verified.",
-      "createdAt": "2026-10-25T09:07:07.867Z",
-      "updatedAt": "2026-10-25T09:07:07.867Z"
+      "remarks": "Compressive strength batch report verified."
     },
     {
       "id": "MAT-005",
@@ -468,14 +468,14 @@
       "minimumThreshold": 10,
       "reorderQuantity": 50,
       "supplier": "RMC Readymix Solutions",
+      "createdAt": "2026-10-25T09:07:07.867Z",
+      "updatedAt": "2026-10-25T09:07:07.867Z",
       "openingQty": 0,
       "receivedQty": 48,
       "usedQty": 48,
       "remainingQty": 0,
       "deliveryDate": "2026-10-19",
-      "remarks": "Batch pour completed for 14th floor perimeter beam.",
-      "createdAt": "2026-10-25T09:07:07.867Z",
-      "updatedAt": "2026-10-25T09:07:07.867Z"
+      "remarks": "Batch pour completed for 14th floor perimeter beam."
     }
   ],
   "materialRequests": [
@@ -494,10 +494,10 @@
       "requiredDate": "2026-10-25",
       "createdAt": "2026-10-19",
       "remarks": "",
+      "updatedAt": "2026-10-25T09:07:07.878Z",
       "reason": "Columns reinforcement for 15th slab casting.",
       "requestingEngineerId": "USR-001",
-      "requestingEngineerName": "Ashok",
-      "updatedAt": "2026-10-25T09:07:07.878Z"
+      "requestingEngineerName": "Ashok"
     },
     {
       "id": "MR-002",
@@ -514,11 +514,11 @@
       "requiredDate": "2026-10-22",
       "createdAt": "2026-10-18",
       "remarks": "",
+      "updatedAt": "2026-10-25T09:07:07.878Z",
       "reason": "Slab embedding before concrete pour.",
       "requestingEngineerId": "USR-001",
       "requestingEngineerName": "Ashok",
-      "managerRemarks": "Approved for supplier dispatch tomorrow morning.",
-      "updatedAt": "2026-10-25T09:07:07.878Z"
+      "managerRemarks": "Approved for supplier dispatch tomorrow morning."
     }
   ],
   "equipment": [
@@ -636,13 +636,13 @@
       "operatorName": "",
       "fuelConsumedLiters": 0,
       "notes": "",
+      "createdAt": "2026-10-25T09:07:07.899Z",
+      "updatedAt": "2026-10-25T09:07:07.899Z",
       "startTime": "08:30",
       "endTime": "16:00",
       "durationHours": 7.5,
       "purpose": "Lifting rebar and precast materials",
-      "remarks": "Smooth operation",
-      "createdAt": "2026-10-25T09:07:07.899Z",
-      "updatedAt": "2026-10-25T09:07:07.899Z"
+      "remarks": "Smooth operation"
     }
   ],
   "issues": [
@@ -658,13 +658,13 @@
       "assignedTo": "",
       "reportedBy": "Ashok",
       "resolutionNotes": "",
+      "createdAt": "2026-10-25T09:07:07.914Z",
+      "updatedAt": "2026-10-25T09:07:07.914Z",
       "date": "2026-10-19",
       "photographs": [
         "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80"
       ],
-      "assignedPerson": "Maintenance Engineer Ganesh",
-      "createdAt": "2026-10-25T09:07:07.914Z",
-      "updatedAt": "2026-10-25T09:07:07.914Z"
+      "assignedPerson": "Maintenance Engineer Ganesh"
     },
     {
       "id": "ISS-002",
@@ -678,13 +678,13 @@
       "assignedTo": "",
       "reportedBy": "Ashok",
       "resolutionNotes": "",
+      "createdAt": "2026-10-25T09:07:07.914Z",
+      "updatedAt": "2026-10-25T09:07:07.914Z",
       "date": "2026-10-18",
       "photographs": [],
       "assignedPerson": "Procurement Officer",
       "resolution": "Alternative stock drawn from central depot; truck arrived at 6 PM.",
-      "resolvedDate": "2026-10-18",
-      "createdAt": "2026-10-25T09:07:07.914Z",
-      "updatedAt": "2026-10-25T09:07:07.914Z"
+      "resolvedDate": "2026-10-18"
     },
     {
       "id": "ISS-003",
@@ -698,13 +698,13 @@
       "assignedTo": "",
       "reportedBy": "Ashok",
       "resolutionNotes": "",
+      "createdAt": "2026-10-25T09:07:07.914Z",
+      "updatedAt": "2026-10-25T09:07:07.914Z",
       "date": "2026-10-19",
       "photographs": [
         "https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=600&q=80"
       ],
-      "assignedPerson": "Site Safety Supervisor",
-      "createdAt": "2026-10-25T09:07:07.914Z",
-      "updatedAt": "2026-10-25T09:07:07.914Z"
+      "assignedPerson": "Site Safety Supervisor"
     },
     {
       "id": "ISS-004",
@@ -718,13 +718,13 @@
       "assignedTo": "",
       "reportedBy": "Karan Singh",
       "resolutionNotes": "",
+      "createdAt": "2026-10-25T09:07:07.915Z",
+      "updatedAt": "2026-10-25T09:07:07.915Z",
       "date": "2026-10-17",
       "photographs": [],
       "assignedPerson": "Vendor Support",
       "resolution": "Consignment cleared and received on site.",
-      "resolvedDate": "2026-10-18",
-      "createdAt": "2026-10-25T09:07:07.915Z",
-      "updatedAt": "2026-10-25T09:07:07.915Z"
+      "resolvedDate": "2026-10-18"
     }
   ],
   "safetyObservations": [
@@ -794,6 +794,22 @@
   ],
   "photos": [
     {
+      "id": "PHT-003",
+      "url": "/src/assets/login-bg.jpg",
+      "title": "Site Staging - Shift inspection",
+      "projectId": "PRJ-002",
+      "projectName": "Office Complex",
+      "siteId": "SIT-001",
+      "siteName": "Site A - Tower Block 1",
+      "category": "Work Progress",
+      "dateTime": "2026-10-26 09:13",
+      "takenAt": "2026-10-26 14:42",
+      "uploadedAt": "2026-10-26 09:13",
+      "description": "Attached to daily report on 2026-10-26.",
+      "uploadedBy": "priya",
+      "createdAt": "2026-10-26T09:13:04.772Z"
+    },
+    {
       "id": "PHT-001",
       "siteId": "SIT-001",
       "siteName": "Site A - Tower Block 1",
@@ -803,13 +819,13 @@
       "tag": "Progress",
       "dateTime": "2026-10-19 11:30",
       "uploadedBy": "Ashok",
+      "createdAt": "2026-10-25T09:07:07.939Z",
+      "updatedAt": "2026-10-25T09:07:07.939Z",
       "projectId": "PRJ-001",
       "projectName": "Apartment Building",
       "category": "Work Progress",
       "takenAt": "2026-10-19 11:15",
-      "uploadedAt": "2026-10-19 11:30",
-      "createdAt": "2026-10-25T09:07:07.939Z",
-      "updatedAt": "2026-10-25T09:07:07.939Z"
+      "uploadedAt": "2026-10-19 11:30"
     },
     {
       "id": "PHT-002",
@@ -821,16 +837,81 @@
       "tag": "Progress",
       "dateTime": "2026-10-18 14:15",
       "uploadedBy": "Ashok",
+      "createdAt": "2026-10-25T09:07:07.939Z",
+      "updatedAt": "2026-10-25T09:07:07.939Z",
       "projectId": "PRJ-002",
       "projectName": "Office Complex",
       "category": "Work Progress",
       "takenAt": "2026-10-18 13:50",
-      "uploadedAt": "2026-10-18 14:15",
-      "createdAt": "2026-10-25T09:07:07.939Z",
-      "updatedAt": "2026-10-25T09:07:07.939Z"
+      "uploadedAt": "2026-10-18 14:15"
     }
   ],
   "dailyReports": [
+    {
+      "siteId": "SIT-001",
+      "siteName": "Site A - Tower Block 1",
+      "projectId": "PRJ-002",
+      "projectName": "Office Complex",
+      "date": "2026-10-26",
+      "engineerId": "USR-001",
+      "engineerName": "priya",
+      "workingHours": "08:00 - 17:00",
+      "weatherCondition": "Sunny",
+      "status": "Submitted",
+      "workersSummary": {
+        "total": 30,
+        "present": 25,
+        "absent": 3,
+        "halfDay": 1,
+        "leave": 1
+      },
+      "workProgress": [
+        {
+          "id": "WP-ROW-1",
+          "category": "Concrete Work",
+          "description": "Foundation slab & column reinforcement casting",
+          "plannedQty": 100,
+          "completedQty": 64,
+          "unit": "m³",
+          "progressPercentage": 64
+        }
+      ],
+      "materialsUsed": [
+        {
+          "materialId": "MAT-001",
+          "materialName": "Cement (OPC 53 Grade)",
+          "quantityUsed": 40,
+          "unit": "bags"
+        },
+        {
+          "materialId": "MAT-002",
+          "materialName": "TMT Reinforcement Steel",
+          "quantityUsed": 15,
+          "unit": "MT"
+        }
+      ],
+      "equipmentUsed": [
+        {
+          "equipmentId": "EQP-001",
+          "equipmentName": "Tower Crane 50m Boom",
+          "hoursUsed": 7.5,
+          "purpose": "Lifting rebar bundles & formwork shuttering"
+        }
+      ],
+      "siteObservations": "Level 14 shuttering alignment verified. Concrete pour prepared.",
+      "problemsEncountered": "None. Mild rain shower for 20 mins, resumed work immediately.",
+      "safetyObservations": "All workers equipped with hard hats, reflective vests, and safety boots.",
+      "generalRemarks": "Work proceeding as per weekly target.",
+      "photographs": [
+        "/src/assets/site-a.jpg",
+        "/src/assets/login-bg.jpg",
+        "/src/assets/login-bg.jpg"
+      ],
+      "id": "DSR-2026-003",
+      "createdAt": "2026-10-26T09:13:13.022Z",
+      "updatedAt": "2026-10-26T09:13:13.022Z",
+      "reviewHistory": []
+    },
     {
       "id": "DSR-2026-001",
       "date": "2026-10-19",
@@ -1002,6 +1083,14 @@
     }
   ],
   "notifications": [
+    {
+      "id": "NOT-3032",
+      "title": "New Daily Report",
+      "message": "Report DSR-2026-003 created by priya",
+      "time": "Just now",
+      "read": false,
+      "type": "report"
+    },
     {
       "id": "NOT-001",
       "title": "Daily Report Submitted",

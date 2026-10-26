@@ -93,11 +93,30 @@ class Database {
       if (!Model) continue;
 
       try {
+        await Model.createIndexes();
+      } catch (indexError) {
+        console.warn(`   ⚠️ Index creation skipped for [${collectionName}]:`, indexError.message);
+      }
+
+      try {
         const count = await Model.countDocuments();
-        if (count === 0 && Array.isArray(this.data[collectionName]) && this.data[collectionName].length > 0) {
-          // Seed MongoDB with local data
-          await Model.insertMany(this.data[collectionName]);
-          console.log(`   ✓ Seeded ${this.data[collectionName].length} items into MongoDB [${collectionName}]`);
+        const localRecords = this.data[collectionName];
+
+        if (count === 0 && Array.isArray(localRecords) && localRecords.length > 0) {
+          const operations = localRecords
+            .filter((record) => record && record.id != null)
+            .map((record) => ({
+              updateOne: {
+                filter: { id: record.id },
+                update: { $setOnInsert: record },
+                upsert: true,
+              },
+            }));
+
+          if (operations.length > 0) {
+            const result = await Model.bulkWrite(operations, { ordered: false });
+            console.log(`   ✓ Seeded ${result.upsertedCount ?? 0} items into MongoDB [${collectionName}]`);
+          }
         } else if (count > 0) {
           // Load latest records from MongoDB
           const docs = await Model.find({}).lean();

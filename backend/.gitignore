@@ -3,3 +3,5 @@ node_modules
 *.log
 npm-debug.log*
 dist
+storage/mongo_data/
+storage/mongo_logs/
