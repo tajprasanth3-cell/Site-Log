@@ -197,6 +197,8 @@ export const IssuesSafetyView: React.FC = () => {
 
       {activeTab === 'issues' ? (
         /* Issues Table (Screenshot 9) */
+        <>
+        <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
         <div className="table-container">
           <table className="data-table">
             <thead>
@@ -262,8 +264,11 @@ export const IssuesSafetyView: React.FC = () => {
             </tbody>
           </table>
         </div>
+        </>
       ) : (
         /* Safety Observations Table (Section 13) */
+        <>
+        <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
         <div className="table-container">
           <table className="data-table">
             <thead>
@@ -331,6 +336,7 @@ export const IssuesSafetyView: React.FC = () => {
             </tbody>
           </table>
         </div>
+        </>
       )}
 
       {isIssueModalOpen && (

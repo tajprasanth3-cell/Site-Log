@@ -29,6 +29,28 @@ const MainAppLayout: React.FC = () => {
     scrollToTop();
   }, [activeSection]);
 
+  useEffect(() => {
+    if (!isMobileSidebarOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileSidebarOpen(false);
+    };
+    const handleResize = () => {
+      if (window.innerWidth > 1024) setIsMobileSidebarOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMobileSidebarOpen]);
+
   if (!isAuthenticated) {
     return <LoginPage />;
   }

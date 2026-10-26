@@ -49,7 +49,7 @@ export const ProgressView: React.FC = () => {
                 {projectSites.length === 0 ? (
                   <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>No individual sites mapped yet.</div>
                 ) : (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+                  <div className="progress-sites-grid">
                     {projectSites.map((s) => (
                       <div
                         key={s.id}

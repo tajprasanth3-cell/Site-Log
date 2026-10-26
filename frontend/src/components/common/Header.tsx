@@ -79,6 +79,13 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
+  const roleLabel =
+    currentUser.role === 'project_manager'
+      ? 'Manager'
+      : currentUser.role === 'admin'
+      ? 'Admin'
+      : 'Engineer';
+
   const trimmedQuery = searchQuery.trim().toLowerCase();
   const searchResults = trimmedQuery.length > 1 ? [
     ...projects
@@ -140,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   };
 
   return (
-    <header className="top-header">
+    <header className={`top-header${isMobileSearchOpen ? ' search-open' : ''}`}>
       <div className="header-left">
         <button
           className="mobile-menu-btn"
@@ -267,13 +274,25 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           title={isBackendConnected ? 'Backend API connected (http://localhost:5000)' : 'Running on local cache (Backend offline)'}
         >
           <span className="api-status-dot" />
-          <span className="api-status-text">{isBackendConnected ? 'API Live' : 'Local'}</span>
+          <span className="api-status-text">
+            {isBackendConnected ? (
+              <>
+                <span className="api-status-prefix">API </span>Live
+              </>
+            ) : (
+              'Local'
+            )}
+          </span>
         </div>
 
         {/* Role Switcher */}
-        <div className="role-switcher" title="Switch active perspective">
+        <div
+          className="role-switcher"
+          title={`Switch role (current: ${currentUser.role.replace('_', ' ')})`}
+        >
           <UserCheck size={14} />
           <span className="role-prefix">Role:</span>
+          <span className="role-mobile-code" aria-hidden="true">{roleLabel}</span>
           <div className="role-select-wrapper">
             <select
               className="role-select"

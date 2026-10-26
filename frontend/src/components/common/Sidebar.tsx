@@ -26,7 +26,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile }) => {
-  const { currentUser, activeSection, setActiveSection, dailyReports, issues, materialRequests } = useApp();
+  const { currentUser, activeSection, setActiveSection, dailyReports, issues, materialRequests, isBackendConnected } = useApp();
 
   const pendingReportsCount = dailyReports.filter((r) => r.status === 'Submitted').length;
   const openIssuesCount = issues.filter((i) => i.status === 'Open' || i.status === 'In Progress').length;
@@ -170,6 +170,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile })
               Role: <strong>{currentUser.role.replace('_', ' ').toUpperCase()}</strong>
             </span>
           </div>
+          {isBackendConnected && (
+            <div className="sidebar-api-status" title="Backend API connected">
+              <span className="sidebar-api-dot" />
+              <span>API Live</span>
+            </div>
+          )}
         </div>
       </aside>
     </>

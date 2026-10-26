@@ -89,6 +89,7 @@
 html, body {
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body {
@@ -121,6 +122,7 @@ body {
 .app-container {
   display: flex;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   position: relative;
 }
@@ -131,6 +133,7 @@ body {
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   height: 100vh;
+  height: 100dvh;
   position: fixed;
   left: 0;
   top: 0;
@@ -378,6 +381,30 @@ body {
   border-radius: 50%;
   background-color: var(--primary);
   box-shadow: 0 0 8px var(--primary);
+  flex-shrink: 0;
+}
+
+/* API connection status inside the mobile navigation drawer */
+.sidebar-api-status {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #34d399;
+}
+
+.sidebar-api-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
   flex-shrink: 0;
 }
 
@@ -733,7 +760,7 @@ body {
 .notification-flyout {
   position: absolute;
   right: 0;
-  top: 48px;
+  top: 52px;
   width: min(340px, calc(100vw - 24px));
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -912,6 +939,11 @@ body {
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
+}
+
+.profile-page-content {
+  min-height: calc(100vh - 100px);
+  min-height: calc(100dvh - 100px);
 }
 
 .page-header {
@@ -1667,6 +1699,12 @@ body {
   flex-wrap: wrap;
 }
 
+.progress-sites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1rem;
+}
+
 .progress-stat-badge {
   display: inline-flex;
   align-items: center;
@@ -1868,6 +1906,7 @@ select option {
   width: 100%;
   max-width: 640px;
   max-height: 90vh;
+  max-height: 90dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1941,6 +1980,25 @@ select option {
 
 .form-grid.grid-3 {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.report-photo-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.report-photo-meta-grid,
+.report-photo-timing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.report-photo-meta-grid .form-group,
+.report-photo-timing-grid .form-group {
+  min-width: 0;
 }
 
 .form-group {
@@ -2078,8 +2136,8 @@ select option {
 /* Toast Notifications */
 .toast-container {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: calc(24px + env(safe-area-inset-right));
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -2175,7 +2233,8 @@ select option {
 .login-wrapper {
   display: flex;
   min-height: 100vh;
-  width: 100vw;
+  min-height: 100dvh;
+  width: 100%;
   background-color: #ffffff;
 }
 
@@ -2392,14 +2451,22 @@ body {
     max-height: 100dvh;
     width: min(290px, 85vw);
     transform: translateX(-100%);
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    padding-top: env(safe-area-inset-top);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.28s;
     box-shadow: none;
     z-index: 999;
   }
 
   .sidebar.mobile-open {
     transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar-footer {
+    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom));
   }
 
   .sidebar-close-btn {
@@ -2563,14 +2630,23 @@ body {
     flex-shrink: 0;
   }
 
+  /* Mobile only: hide the API/Local status badge from the header */
+  .top-header .api-status-badge {
+    display: none;
+  }
+
+  .sidebar-api-status {
+    display: inline-flex;
+  }
+
   .notification-flyout {
     position: fixed !important;
-    top: 54px !important;
+    top: calc(var(--header-height) + env(safe-area-inset-top) + 6px) !important;
     left: 10px !important;
     right: 10px !important;
     width: auto !important;
     max-width: calc(100vw - 20px) !important;
-    max-height: calc(85vh - 60px) !important;
+    max-height: calc(100dvh - var(--header-height) - env(safe-area-inset-top) - 24px) !important;
     display: flex !important;
     flex-direction: column !important;
     z-index: 1050 !important;
@@ -2685,6 +2761,7 @@ body {
     flex: 1;
     padding: 2.5rem 1.5rem;
     min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .mobile-login-brand {
@@ -2698,6 +2775,7 @@ body {
 
   .modal-content {
     max-height: 88vh;
+    max-height: 88dvh;
     width: 100%;
     max-width: 95vw;
   }
@@ -2712,6 +2790,130 @@ body {
 
   .modal-footer {
     padding: 0.85rem 1.25rem;
+  }
+}
+
+
+/* ==========================================================================
+   B.7 Mobile Search Takeover (max-width: 768px)
+   While searching, the field owns the header so nothing can collide.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .top-header.search-open {
+    gap: 0;
+  }
+
+  .top-header.search-open .mobile-menu-btn,
+  .top-header.search-open .header-right {
+    display: none !important;
+  }
+
+  .top-header.search-open .header-left {
+    flex: 1 1 auto;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .top-header.search-open .header-brand-logo {
+    display: none !important;
+  }
+
+  .top-header.search-open .global-search-container.mobile-search-open {
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .top-header.search-open .global-search-bar {
+    width: 100%;
+    min-height: 40px;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .top-header.search-open .global-search-input {
+    font-size: 16px;
+  }
+
+  .top-header.search-open .search-clear-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+  }
+
+  .top-header.search-open .search-dropdown-menu {
+    width: 100% !important;
+    max-width: none !important;
+    left: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   B.8 Compact role switcher on phones
+   The native select stays functional as a transparent overlay; the pill shows
+   the role icon, a short code and a chevron, so the header never truncates.
+   ========================================================================== */
+.role-mobile-code {
+  display: none;
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .role-select {
+    max-width: 130px;
+  }
+}
+
+@media (max-width: 640px) {
+  .role-switcher {
+    position: relative;
+    padding: 0.2rem 0.4rem;
+    gap: 0.3rem;
+    min-height: 40px;
+    min-width: 0;
+  }
+
+  .role-switcher > svg {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .role-mobile-code {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #c2410c;
+    line-height: 1;
+  }
+
+  .role-select-wrapper {
+    position: static;
+    display: inline-flex;
+  }
+
+  .role-select {
+    position: absolute !important;
+    inset: -1px !important;
+    width: calc(100% + 2px) !important;
+    height: calc(100% + 2px) !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .role-chevron {
+    position: static;
+    z-index: 3;
+  }
+
+  .role-switcher:focus-within {
+    outline: 2px solid rgba(234, 88, 12, 0.45);
+    outline-offset: 2px;
   }
 }
 
@@ -2776,7 +2978,7 @@ body {
 
   /* Page 2: Dashboard */
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 0.75rem;
   }
 
@@ -2811,20 +3013,7 @@ body {
     gap: 0.75rem;
   }
 
-  .filter-group {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .search-input-wrapper {
-    width: 100% !important;
-  }
-
-  .filter-select {
-    width: 100%;
-  }
+  /* Filter rows stay two-up and wrap on narrow screens (see B.6) */
 
   /* Page 4: Sites */
   .sites-grid {
@@ -2939,11 +3128,6 @@ body {
     justify-content: center;
   }
 
-  .workers-view .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
   .worker-toggle-actions {
     display: flex;
     gap: 0.25rem;
@@ -2968,11 +3152,6 @@ body {
     justify-content: center;
   }
 
-  .materials-view .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
   /* Page 9: Equipment */
   .equipment-view .page-header {
     flex-direction: column;
@@ -2984,11 +3163,6 @@ body {
   .equipment-view .page-header .btn {
     width: 100%;
     justify-content: center;
-  }
-
-  .equipment-view .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
   }
 
   /* Page 10: Issues & Safety */
@@ -3008,11 +3182,6 @@ body {
   .issues-view .page-actions .btn {
     width: 100%;
     justify-content: center;
-  }
-
-  .issues-view .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
   }
 
   /* Page 11: Site Photos */
@@ -3169,6 +3338,7 @@ body {
   .modal-content {
     border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
     max-height: 90vh !important;
+    max-height: 90dvh !important;
     width: 100% !important;
     max-width: 100vw !important;
     margin: 0 !important;
@@ -3196,28 +3366,10 @@ body {
     box-sizing: border-box !important;
   }
 
-  .modal-footer {
-    padding: 0.75rem 1rem !important;
-    margin: 1rem 0 0 0 !important;
-    border-top: 1px solid var(--border);
-    flex-direction: column-reverse !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    flex-shrink: 0 !important;
-  }
-
-  .modal-footer .btn {
-    width: 100% !important;
-    min-height: 42px;
-    justify-content: center;
-    margin: 0 !important;
-  }
-
   .toast-container {
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
   }
 
   .toast {
@@ -3438,295 +3590,19 @@ body {
   }
 }
 
-/* --------------------------------------------------------------------------
-   B.2 Narrow Mobile (max-width: 520px) - Page-by-Page
-   -------------------------------------------------------------------------- */
-@media (max-width: 520px) {
-  /* Page 1: Header */
-  .top-header {
-    padding: 0 0.65rem;
-    gap: 0.35rem;
-  }
-
-  .role-select {
-    max-width: 82px;
-    text-overflow: ellipsis;
-  }
-
-  .header-right {
-    gap: 0.35rem;
-  }
-
-  /* Page 2: Dashboard */
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .progress-card-header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.75rem !important;
-  }
-
-  .progress-stat-badge {
-    text-align: left !important;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .progress-donut-container {
-    padding: 0.75rem 0;
-  }
-
-  .donut-graphic {
-    transform: scale(0.95);
-    transform-origin: center;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   B.3 Small Mobile Phones (max-width: 480px) - Page-by-Page
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  /* Page 1: Header - Compact Logo, Adaptive Search */
-  .top-header {
-    padding: 0 0.5rem;
-    gap: 0.25rem;
-  }
-
-  .header-brand-text {
-    display: none;
-  }
-
-  .header-brand-logo {
-    padding: 0.2rem 0.35rem;
-  }
-
-  .header-brand-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .global-search-container.mobile-search-open {
-    width: 155px !important;
-    max-width: calc(100vw - 180px) !important;
-  }
-
-  .header-right {
-    gap: 0.25rem;
-  }
-
-  .role-switcher {
-    padding: 0.25rem 0.45rem;
-  }
-
-  .role-select {
-    max-width: 72px;
-    font-size: 0.7rem;
-  }
-
-  .api-status-badge {
-    padding: 0.2rem 0.4rem;
-    font-size: 0.65rem;
-  }
-
-  @media (max-width: 374px) {
-    .api-status-text {
-      display: none;
-    }
-    .api-status-badge {
-      padding: 0.3rem;
-      border-radius: 50%;
-    }
-  }
-
-  .icon-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .user-avatar {
-    width: 28px;
-    height: 28px;
-  }
-
-  .notification-flyout {
-    position: fixed !important;
-    top: 50px !important;
-    left: 6px !important;
-    right: 6px !important;
-    width: auto !important;
-    max-width: calc(100vw - 12px) !important;
-    max-height: calc(85vh - 54px) !important;
-  }
-
-  .search-dropdown-menu {
-    width: calc(100vw - 16px);
-    left: -36px;
-  }
-
-  /* Page Layout (Small Mobile) */
-  .page-content {
-    padding: 0.85rem 0.65rem;
-  }
-
-  .page-title {
-    font-size: 1.25rem;
-  }
-
-  .page-actions {
-    flex-direction: column;
-  }
-
-  .page-actions .btn {
-    width: 100%;
-  }
-
-  /* Page 2: Dashboard */
-  .donut-graphic {
-    transform: scale(0.9);
-    transform-origin: center;
-  }
-
-  /* Page 7: Workers */
-  .workers-view .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Page 15: Login */
-  .login-form-pane {
-    padding: 2rem 1rem;
-  }
-
-  .login-form-title {
-    font-size: 1.5rem;
-  }
-
-  /* Universal Elements (Small Mobile) */
-  .data-table th,
-  .data-table td {
-    padding: 0.6rem 0.65rem;
-    font-size: 0.76rem;
-  }
-
-  .btn {
-    padding: 0.48rem 0.75rem;
-    font-size: 0.8rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   B.4 Ultra-Compact Devices (max-width: 360px) - Page-by-Page
-   -------------------------------------------------------------------------- */
-@media (max-width: 360px) {
-  /* Page 2: Dashboard Card Headers (title + badge/button on one row, no truncation) */
-  .progress-donut-card .card-header,
-  .recent-reports-card .card-header,
-  .recent-issues-card .card-header {
-    padding: 0.65rem 0.6rem !important;
-    gap: 0.35rem !important;
-  }
-
-  .progress-donut-card .card-title,
-  .recent-reports-card .card-title,
-  .recent-issues-card .card-title {
-    font-size: 0.78rem !important;
-    gap: 0.35rem !important;
-  }
-
-  .progress-donut-card .card-title svg,
-  .recent-reports-card .card-title svg,
-  .recent-issues-card .card-title svg {
-    width: 15px !important;
-    height: 15px !important;
-  }
-
-  .progress-donut-card .card-header .btn,
-  .progress-donut-card .card-header .badge,
-  .recent-reports-card .card-header .btn,
-  .recent-issues-card .card-header .btn {
-    padding: 0 0.45rem !important;
-    font-size: 0.68rem !important;
-  }
-
-  /* Page 1: Header (Ultra-Compact) */
-  .top-header {
-    padding: 0 0.35rem;
-  }
-
-  .global-search-container.mobile-search-open {
-    width: 130px !important;
-    max-width: calc(100vw - 165px) !important;
-  }
-
-  .role-select {
-    font-size: 0.68rem;
-    max-width: 58px;
-  }
-
-  .icon-btn {
-    width: 28px;
-    height: 28px;
-  }
-
-  .user-avatar {
-    width: 26px;
-    height: 26px;
-  }
-
-  /* Universal Modals (Ultra-Compact) */
-  .modal-backdrop {
-    padding: 0.25rem;
-  }
-
-  .modal-content {
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-  }
-}
-
-
-
-/* --------------------------------------------------------------------------
-   B.5 Foldable / Ultra-Narrow (max-width: 300px) - Dashboard Card Headers
-   -------------------------------------------------------------------------- */
-@media (max-width: 300px) {
-  .progress-donut-card .card-header,
-  .recent-reports-card .card-header,
-  .recent-issues-card .card-header {
-    padding: 0.6rem 0.5rem !important;
-    gap: 0.3rem !important;
-  }
-
-  .progress-donut-card .card-title,
-  .recent-reports-card .card-title,
-  .recent-issues-card .card-title {
-    font-size: 0.72rem !important;
-    gap: 0.3rem !important;
-  }
-
-  .progress-donut-card .card-title svg,
-  .recent-reports-card .card-title svg,
-  .recent-issues-card .card-title svg {
-    width: 14px !important;
-    height: 14px !important;
-  }
-
-  .progress-donut-card .card-header .btn,
-  .progress-donut-card .card-header .badge,
-  .recent-reports-card .card-header .btn,
-  .recent-issues-card .card-header .btn {
-    padding: 0 0.35rem !important;
-    font-size: 0.64rem !important;
-  }
-}
-
 /* ==========================================================================
    B.6 Professional Mobile Polish (max-width: 640px)
    Page-by-page refinements: spacing, touch targets, filters, tables, forms
    ========================================================================== */
 @media (max-width: 640px) {
+  button,
+  a,
+  [role='button'],
+  select,
+  input[type='checkbox'] {
+    touch-action: manipulation;
+  }
+
   /* Header controls keep clear separation */
   .header-right {
     gap: 0.3rem;
@@ -3833,6 +3709,13 @@ body {
     min-height: 36px !important;
   }
 
+  /* Prevent iOS focus zoom: keep form text at 16px on phones */
+  input:not([type='checkbox']):not([type='radio']),
+  select:not(.role-select),
+  textarea {
+    font-size: 16px !important;
+  }
+
   /* Filter bars: no vertical stretching, adaptive two-up selects */
   .filter-bar {
     padding: 0.75rem;
@@ -3876,12 +3759,7 @@ body {
     box-sizing: border-box;
   }
 
-  /* Two-up stat cards where space allows, single column on tiny screens */
-  .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
-    gap: 0.65rem !important;
-  }
-
+  /* Stat cards keep the adaptive two-up layout defined above */
   .stat-card {
     padding: 0.8rem !important;
   }
@@ -3957,9 +3835,11 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  /* Tables: make horizontal scrolling discoverable */
+  /* Tables: make horizontal scrolling discoverable and contained */
   .table-container {
     box-shadow: inset -12px 0 12px -12px rgba(15, 23, 42, 0.35);
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
   }
 
   .data-table th,
@@ -4003,6 +3883,14 @@ body {
     min-height: 40px;
   }
 
+  .daily-report-form button[title='Remove photo'] {
+    width: 36px !important;
+    height: 36px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .login-form-pane label:has(input[type='checkbox']) {
     min-height: 40px;
     display: inline-flex;
@@ -4028,53 +3916,218 @@ body {
   }
 }
 
-/* Compact header: keep every control separated on small phones */
-@media (max-width: 640px) {
-  .role-switcher > svg {
+
+/* Keep the compact logo icon-only until the header has room for the wordmark.
+   Between ~481px and ~526px the full wordmark used to push the search button
+   over the API status badge, so hide it with a safety margin instead. */
+@media (max-width: 600px) {
+  .header-brand-text {
     display: none;
   }
 }
 
+/* --------------------------------------------------------------------------
+   B.2 Narrow Mobile (max-width: 520px) - Page-by-Page
+   -------------------------------------------------------------------------- */
+@media (max-width: 520px) {
+  /* Page 1: Header */
+  .top-header {
+    padding: 0 0.65rem;
+    gap: 0.35rem;
+  }
+
+  .header-right {
+    gap: 0.35rem;
+  }
+
+  /* Page 2: Dashboard */
+  .progress-card-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .progress-stat-badge {
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .progress-donut-container {
+    padding: 0.75rem 0;
+  }
+
+  .donut-graphic {
+    transform: scale(0.95);
+    transform-origin: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B.3 Small Mobile Phones (max-width: 480px) - Page-by-Page
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Page 1: Header - Compact Logo, Adaptive Search */
+  .top-header {
+    padding: 0 0.5rem;
+    gap: 0.25rem;
+  }
+
+  .header-brand-logo {
+    padding: 0.2rem 0.35rem;
+  }
+
+  .header-brand-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .global-search-container.mobile-search-open {
+    width: 155px !important;
+    max-width: calc(100vw - 180px) !important;
+  }
+
+  .header-right {
+    gap: 0.25rem;
+  }
+
+  .role-switcher {
+    padding: 0.25rem 0.45rem;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .notification-flyout {
+    position: fixed !important;
+    top: calc(var(--header-height) + env(safe-area-inset-top) + 6px) !important;
+    left: 6px !important;
+    right: 6px !important;
+    width: auto !important;
+    max-width: calc(100vw - 12px) !important;
+    max-height: calc(100dvh - var(--header-height) - env(safe-area-inset-top) - 20px) !important;
+  }
+
+  /* Page Layout (Small Mobile) */
+  .page-content {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  .page-actions {
+    flex-direction: column;
+  }
+
+  .page-actions .btn {
+    width: 100%;
+  }
+
+  /* Page 2: Dashboard */
+  .donut-graphic {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  /* Page 15: Login */
+  .login-form-pane {
+    padding: 2rem 1rem;
+  }
+
+  .login-form-title {
+    font-size: 1.5rem;
+  }
+
+  /* Universal Elements (Small Mobile) */
+  .data-table th,
+  .data-table td {
+    padding: 0.6rem 0.65rem;
+    font-size: 0.76rem;
+  }
+
+  .btn {
+    padding: 0.48rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B.4 Ultra-Compact Devices (max-width: 360px) - Page-by-Page
+   -------------------------------------------------------------------------- */
 @media (max-width: 440px) {
   .header-brand-logo {
     display: none !important;
   }
 }
 
-@media (max-width: 400px) {
-  .role-select {
-    max-width: 62px;
-    font-size: 0.72rem;
-  }
-}
-
-@media (max-width: 374px) {
-  .icon-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .user-profile-chip {
-    min-width: 34px;
-    min-height: 34px;
-  }
-}
-
-@media (max-width: 320px) {
-  .mobile-menu-btn,
-  .mobile-search-trigger-btn {
-    min-width: 36px;
-    min-height: 36px;
-  }
-}
-
-@media (max-width: 310px) {
-  .api-status-badge {
+/* Phone header breathing room: hide the decorative role icon */
+@media (max-width: 430px) {
+  .role-switcher > svg {
     display: none;
   }
 }
 
 @media (max-width: 360px) {
+  /* Keep the two-up stat layout readable without clipping trend text */
+  .stat-card {
+    padding: 0.65rem !important;
+    gap: 0.5rem;
+  }
+
+  .stat-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .stat-icon-wrapper svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stat-trend {
+    font-size: 0.7rem;
+  }
+
+  /* Page 2: Dashboard Card Headers (title + badge/button on one row, no truncation) */
+  .progress-donut-card .card-header,
+  .recent-reports-card .card-header,
+  .recent-issues-card .card-header {
+    padding: 0.65rem 0.6rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .progress-donut-card .card-title,
+  .recent-reports-card .card-title,
+  .recent-issues-card .card-title {
+    font-size: 0.78rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .progress-donut-card .card-title svg,
+  .recent-reports-card .card-title svg,
+  .recent-issues-card .card-title svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .progress-donut-card .card-header .btn,
+  .progress-donut-card .card-header .badge,
+  .recent-reports-card .card-header .btn,
+  .recent-issues-card .card-header .btn {
+    padding: 0 0.45rem !important;
+    font-size: 0.68rem !important;
+  }
+
   .recent-reports-card .card-header .btn,
   .recent-issues-card .card-header .btn,
   .progress-donut-card .card-header .badge {
@@ -4089,5 +4142,158 @@ body {
   .tab-btn {
     padding: 0.45rem 0.7rem;
     font-size: 0.76rem;
+  }
+
+  /* Page 1: Header (Ultra-Compact) */
+  .top-header {
+    padding: 0 0.35rem;
+  }
+
+  .global-search-container.mobile-search-open {
+    width: 130px !important;
+    max-width: calc(100vw - 165px) !important;
+  }
+
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Universal Modals (Ultra-Compact) */
+  .modal-backdrop {
+    padding: 0.25rem;
+  }
+
+  .modal-content {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+}
+
+
+
+@media (max-width: 320px) {
+  .mobile-menu-btn,
+  .mobile-search-trigger-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B.5 Foldable / Ultra-Narrow (max-width: 300px) - Dashboard Card Headers
+   -------------------------------------------------------------------------- */
+@media (max-width: 300px) {
+  .progress-donut-card .card-header,
+  .recent-reports-card .card-header,
+  .recent-issues-card .card-header {
+    padding: 0.6rem 0.5rem !important;
+    gap: 0.3rem !important;
+  }
+
+  .progress-donut-card .card-title,
+  .recent-reports-card .card-title,
+  .recent-issues-card .card-title {
+    font-size: 0.72rem !important;
+    gap: 0.3rem !important;
+  }
+
+  .progress-donut-card .card-title svg,
+  .recent-reports-card .card-title svg,
+  .recent-issues-card .card-title svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .progress-donut-card .card-header .btn,
+  .progress-donut-card .card-header .badge,
+  .recent-reports-card .card-header .btn,
+  .recent-issues-card .card-header .btn {
+    padding: 0 0.35rem !important;
+    font-size: 0.64rem !important;
+  }
+
+  /* Profile lives in the drawer on ultra-narrow phones */
+  .user-profile-chip {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   C. Safe-area and landscape-phone corrections
+   ========================================================================== */
+.top-header {
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
+}
+
+.main-content-area {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 768px) {
+  .top-header {
+    height: calc(var(--header-height) + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 520px) {
+  .top-header {
+    padding-left: max(0.65rem, env(safe-area-inset-left));
+    padding-right: max(0.65rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 480px) {
+  .top-header {
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 360px) {
+  .top-header {
+    padding-left: max(0.35rem, env(safe-area-inset-left));
+    padding-right: max(0.35rem, env(safe-area-inset-right));
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .login-hero {
+    display: none !important;
+  }
+
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-form-pane {
+    min-height: 100dvh;
+    padding: 1.25rem 1rem;
+  }
+
+  .login-box {
+    margin: auto;
+  }
+}
+
+/* Prevent native date/time controls from forcing grid tracks wider than the screen */
+input[type='date'],
+input[type='datetime-local'],
+input[type='time'] {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .report-photo-preset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-photo-meta-grid,
+  .report-photo-timing-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -13,7 +13,6 @@ export const ProfileView: React.FC = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        minHeight: 'calc(100vh - 100px)',
         paddingTop: '2rem',
       }}
     >

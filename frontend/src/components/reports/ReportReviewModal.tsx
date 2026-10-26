@@ -19,12 +19,11 @@ export const ReportReviewModal: React.FC<ReportReviewModalProps> = ({
   const { currentUser, approveReport, requestReportRevision, setSelectedReportForEdit, setActiveSection } = useApp();
   const [managerComment, setManagerComment] = useState('');
   const [previewPhotoUrl, setPreviewPhotoUrl] = useState<string | null>(null);
+  const [commentError, setCommentError] = useState('');
 
   if (!report) return null;
 
   const isManagerOrAdmin = currentUser.role === 'project_manager' || currentUser.role === 'admin';
-
-  const [commentError, setCommentError] = useState('');
 
   const handleApprove = () => {
     approveReport(report.id, managerComment || 'Report approved. All items verified.');
@@ -125,6 +124,7 @@ export const ReportReviewModal: React.FC<ReportReviewModalProps> = ({
           <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: '#334155' }}>
             Work Progress Log
           </div>
+          <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
           <div className="table-container">
             <table className="data-table">
               <thead>

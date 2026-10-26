@@ -756,6 +756,7 @@ export const DailyReportForm: React.FC = () => {
             </button>
           </div>
           <div className="card-body" style={{ padding: 0 }}>
+            <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
             <div className="table-container" style={{ border: 'none', borderRadius: 0, boxShadow: 'none' }}>
               <table className="data-table">
                 <thead>
@@ -1221,7 +1222,7 @@ export const DailyReportForm: React.FC = () => {
               <label className="form-label" style={{ fontWeight: 600, fontSize: '0.82rem', marginBottom: '0.4rem', display: 'block', color: '#475569' }}>
                 Or select from Site Presets:
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+              <div className="report-photo-preset-grid">
                 {[
                   { name: 'Site A', img: siteAImg, tag: 'Civil' },
                   { name: 'Site B', img: siteBImg, tag: 'Steel' },
@@ -1302,7 +1303,7 @@ export const DailyReportForm: React.FC = () => {
             )}
 
             {/* Category and Caption */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="report-photo-meta-grid">
               <div className="form-group" style={{ margin: 0 }}>
                 <label className="form-label" style={{ fontWeight: 600, fontSize: '0.82rem' }}>Photo Category</label>
                 <select
@@ -1335,7 +1336,7 @@ export const DailyReportForm: React.FC = () => {
             </div>
 
             {/* Date and Time: Taken & Auto-recorded Upload */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'center' }}>
+            <div className="report-photo-timing-grid">
               <div className="form-group" style={{ margin: 0 }}>
                 <label className="form-label" style={{ fontWeight: 600, fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <Calendar size={13} color="#f97316" />
@@ -1419,6 +1420,7 @@ export const DailyReportForm: React.FC = () => {
               <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem' }}>
                 Work Progress Items:
               </div>
+              <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
               <div className="table-container">
                 <table className="data-table">
                   <thead>

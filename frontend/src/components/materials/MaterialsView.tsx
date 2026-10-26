@@ -127,6 +127,7 @@ export const MaterialsView: React.FC = () => {
           </div>
 
           {/* Table (Screenshot 7) */}
+          <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
           <div className="table-container">
             <table className="data-table">
               <thead>
@@ -188,6 +189,8 @@ export const MaterialsView: React.FC = () => {
         </>
       ) : (
         /* Requisition Requests Workflow View (Section 10) */
+        <>
+        <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
         <div className="table-container">
           <table className="data-table">
             <thead>
@@ -296,6 +299,7 @@ export const MaterialsView: React.FC = () => {
             </tbody>
           </table>
         </div>
+        </>
       )}
 
       {isRequestModalOpen && (

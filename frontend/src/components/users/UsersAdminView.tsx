@@ -55,6 +55,8 @@ export const UsersAdminView: React.FC = () => {
         </button>
       </div>
 
+      <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
+
       <div className="table-container">
         <table className="data-table">
           <thead>

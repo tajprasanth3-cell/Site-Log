@@ -129,6 +129,7 @@ export const EquipmentView: React.FC = () => {
       </div>
 
       {/* Table (Screenshot 8) */}
+      <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
       <div className="table-container">
         <table className="data-table">
           <thead>

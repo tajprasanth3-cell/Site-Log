@@ -123,6 +123,7 @@ export const ProjectsView: React.FC = () => {
       </div>
 
       {/* Projects Table */}
+      <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
       <div className="table-container">
         <table className="data-table">
           <thead>

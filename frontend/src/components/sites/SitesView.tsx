@@ -116,6 +116,7 @@ export const SitesView: React.FC = () => {
       </div>
 
       {/* Table (Screenshot 4) */}
+      <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
       <div className="table-container">
         <table className="data-table">
           <thead>

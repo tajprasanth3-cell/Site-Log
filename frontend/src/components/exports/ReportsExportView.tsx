@@ -438,6 +438,7 @@ export const ReportsExportView: React.FC = () => {
       </div>
 
       {/* Table */}
+      <div className="mobile-scroll-hint">Swipe horizontally to see all columns</div>
       <div className="table-container">
         <table className="data-table">
           <thead>
