@@ -4401,22 +4401,23 @@ input[type='time'] {
     display: none !important;
   }
 
-  /* 5. Role Switcher Capsule Pill */
+  /* 5. Role Switcher Capsule Pill - Spacious & Uncramped on Mobile */
   .top-header .role-switcher {
     height: 36px !important;
     min-height: 36px !important;
     max-height: 36px !important;
-    padding: 0 0.55rem !important;
+    padding: 0 0.8rem !important;
     border-radius: var(--radius-full) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 0.3rem !important;
+    gap: 0.45rem !important;
     background: #fff7ed !important;
     border: 1px solid #fed7aa !important;
     box-sizing: border-box !important;
     margin: 0 !important;
     line-height: 1 !important;
+    cursor: pointer !important;
   }
 
   .top-header .role-prefix {
@@ -4432,42 +4433,28 @@ input[type='time'] {
     height: 14px !important;
   }
 
-  .top-header .role-select-wrapper {
-    position: relative !important;
-    display: inline-flex !important;
-    align-items: center !important;
-  }
-
-  .top-header .role-select {
-    position: static !important;
-    opacity: 1 !important;
-    background: transparent !important;
-    border: none !important;
-    color: #c2410c !important;
+  .top-header .role-current-text {
+    font-size: 0.8rem !important;
     font-weight: 700 !important;
-    font-size: 0.78rem !important;
-    outline: none !important;
-    cursor: pointer !important;
-    padding: 0 1rem 0 0 !important;
-    margin: 0 !important;
-    height: 32px !important;
-    min-height: 32px !important;
-    max-width: 82px !important;
-    display: inline-block !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
+    color: #c2410c !important;
+    line-height: 1 !important;
+    letter-spacing: 0.01em !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: clip !important;
   }
 
   .top-header .role-chevron {
-    position: absolute !important;
-    right: 0 !important;
-    pointer-events: none !important;
+    position: static !important;
     color: #ea580c !important;
-    width: 11px !important;
-    height: 11px !important;
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0 !important;
+    pointer-events: none !important;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .top-header .role-chevron.rotated {
+    transform: rotate(180deg) !important;
+    color: #c2410c !important;
   }
 
   /* 6. Notification Bell & Badge */
@@ -4530,17 +4517,15 @@ input[type='time'] {
   }
 
   .top-header .role-switcher {
-    height: 33px !important;
-    min-height: 33px !important;
-    max-height: 33px !important;
-    padding: 0 0.42rem !important;
-    gap: 0.25rem !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    padding: 0 0.65rem !important;
+    gap: 0.35rem !important;
   }
 
-  .top-header .role-select {
-    font-size: 0.72rem !important;
-    max-width: 68px !important;
-    padding-right: 0.85rem !important;
+  .top-header .role-current-text {
+    font-size: 0.74rem !important;
   }
 }
 
