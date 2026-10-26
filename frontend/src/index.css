@@ -2795,23 +2795,17 @@ body {
 
 
 /* ==========================================================================
-   B.7 Mobile Search Takeover (max-width: 768px)
-   While searching, the field owns the header so nothing can collide.
+   B.7 Compact Mobile Search (max-width: 768px)
+   Search opens small and inline, keeping all other controls visible!
    ========================================================================== */
 @media (max-width: 768px) {
   .top-header.search-open {
-    gap: 0;
+    gap: 0.35rem !important;
   }
 
   .top-header.search-open .mobile-menu-btn,
   .top-header.search-open .header-right {
-    display: none !important;
-  }
-
-  .top-header.search-open .header-left {
-    flex: 1 1 auto;
-    max-width: none;
-    min-width: 0;
+    display: flex !important;
   }
 
   .top-header.search-open .header-brand-logo {
@@ -2820,32 +2814,37 @@ body {
 
   .top-header.search-open .global-search-container.mobile-search-open {
     display: flex !important;
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
+    width: 140px !important;
+    max-width: calc(100vw - 225px) !important;
+    min-width: 110px !important;
+    flex: 0 1 auto !important;
+    animation: fadeIn 0.16s ease-out;
   }
 
   .top-header.search-open .global-search-bar {
     width: 100%;
-    min-height: 40px;
-    padding: 0.35rem 0.75rem;
+    min-height: 36px !important;
+    height: 36px !important;
+    padding: 0.2rem 0.5rem;
+    box-sizing: border-box;
+    border-radius: var(--radius-full);
   }
 
   .top-header.search-open .global-search-input {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 
   .top-header.search-open .search-clear-btn {
-    width: 36px;
-    height: 36px;
+    width: 24px;
+    height: 24px;
     padding: 0;
   }
 
   .top-header.search-open .search-dropdown-menu {
-    width: 100% !important;
-    max-width: none !important;
+    width: min(280px, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
     left: 0 !important;
+    top: calc(100% + 6px);
   }
 }
 
@@ -4542,5 +4541,177 @@ input[type='time'] {
     font-size: 0.72rem !important;
     max-width: 68px !important;
     padding-right: 0.85rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   B.10 Animated Role Dropdown (Smooth enter, rotating chevron & micro-interactions)
+   ========================================================================== */
+.role-switcher {
+  position: relative !important;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.role-switcher:focus-visible {
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.35) !important;
+}
+
+.role-current-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #c2410c;
+  line-height: 1;
+}
+
+.role-chevron {
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease !important;
+  color: #ea580c;
+}
+
+.role-chevron.rotated {
+  transform: rotate(180deg) !important;
+  color: #c2410c !important;
+}
+
+/* Animated Menu Popover */
+.role-animated-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 235px;
+  max-width: calc(100vw - 20px);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.2), 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.45rem;
+  z-index: 1060;
+  transform-origin: top right;
+  animation: roleDropdownEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-sizing: border-box;
+}
+
+@keyframes roleDropdownEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.role-dropdown-header {
+  padding: 0.35rem 0.5rem 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.15rem;
+}
+
+.role-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.role-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.role-dropdown-item:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  transform: translateX(2px);
+}
+
+.role-dropdown-item.active {
+  background: #fff7ed;
+  border-color: #f97316;
+}
+
+.role-dropdown-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.role-dropdown-item.active .role-dropdown-item-icon {
+  background: #ffedd5;
+}
+
+.role-dropdown-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.role-dropdown-item-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.role-dropdown-item.active .role-dropdown-item-title {
+  color: #c2410c;
+}
+
+.role-dropdown-item-desc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+.role-dropdown-check {
+  flex-shrink: 0;
+  animation: checkPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .role-animated-dropdown {
+    right: -10px;
+    width: min(240px, calc(100vw - 20px));
+  }
+}
+
+@media (max-width: 400px) {
+  .role-animated-dropdown {
+    right: -25px;
+    width: min(230px, calc(100vw - 16px));
   }
 }

@@ -42,6 +42,9 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationContainerRef = useRef<HTMLDivElement>(null);
 
+  const [showRoleDropdown, setShowRoleDropdown] = useState(false);
+  const roleDropdownRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -50,14 +53,20 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
       ) {
         setShowNotifications(false);
       }
+      if (
+        roleDropdownRef.current &&
+        !roleDropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowRoleDropdown(false);
+      }
     };
-    if (showNotifications) {
+    if (showNotifications || showRoleDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
     }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showNotifications]);
+  }, [showNotifications, showRoleDropdown]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
@@ -86,6 +95,30 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
       ? 'Admin'
       : 'Engineer';
 
+  const roleOptions: { id: UserRole; label: string; fullTitle: string; icon: React.ReactNode; desc: string }[] = [
+    {
+      id: 'site_engineer',
+      label: 'Engineer',
+      fullTitle: 'Site Engineer',
+      icon: <HardHat size={16} color="#ea580c" />,
+      desc: 'Field execution & daily logging',
+    },
+    {
+      id: 'project_manager',
+      label: 'Manager',
+      fullTitle: 'Project Manager',
+      icon: <Shield size={16} color="#2563eb" />,
+      desc: 'Approvals & milestone tracking',
+    },
+    {
+      id: 'admin',
+      label: 'Admin',
+      fullTitle: 'System Admin',
+      icon: <UserCheck size={16} color="#10b981" />,
+      desc: 'Platform & user management',
+    },
+  ];
+
   const trimmedQuery = searchQuery.trim().toLowerCase();
   const searchResults = trimmedQuery.length > 1 ? [
     ...projects
@@ -110,9 +143,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
       .map((m) => ({ id: m.id, title: m.name, subtitle: `${m.id} • ${m.category} • Material`, section: 'materials' })),
   ] : [];
 
-  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    switchRole(e.target.value as UserRole);
-  };
+
 
   const getNotifIcon = (type: string) => {
     switch (type) {
@@ -287,24 +318,59 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
 
         {/* Role Switcher */}
         <div
-          className="role-switcher"
+          className={`role-switcher ${showRoleDropdown ? 'dropdown-open' : ''}`}
+          ref={roleDropdownRef}
+          onClick={() => setShowRoleDropdown(!showRoleDropdown)}
           title={`Switch role (current: ${currentUser.role.replace('_', ' ')})`}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setShowRoleDropdown(!showRoleDropdown);
+            }
+          }}
         >
           <UserCheck size={14} className="role-icon" />
           <span className="role-prefix">Role:</span>
-          <div className="role-select-wrapper">
-            <select
-              className="role-select"
-              value={currentUser.role}
-              onChange={handleRoleChange}
-              aria-label="Active user role"
+          <span className="role-current-text">{roleLabel}</span>
+          <ChevronDown
+            size={12}
+            className={`role-chevron ${showRoleDropdown ? 'rotated' : ''}`}
+          />
+
+          {showRoleDropdown && (
+            <div
+              className="role-animated-dropdown"
+              onClick={(e) => e.stopPropagation()}
             >
-              <option value="site_engineer">Engineer</option>
-              <option value="project_manager">Manager</option>
-              <option value="admin">Admin</option>
-            </select>
-            <ChevronDown size={11} className="role-chevron" />
-          </div>
+              <div className="role-dropdown-header">
+                <span>Switch Active Perspective</span>
+              </div>
+              <div className="role-dropdown-list">
+                {roleOptions.map((opt) => (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    className={`role-dropdown-item ${currentUser.role === opt.id ? 'active' : ''}`}
+                    onClick={() => {
+                      switchRole(opt.id);
+                      setShowRoleDropdown(false);
+                    }}
+                  >
+                    <div className="role-dropdown-item-icon">{opt.icon}</div>
+                    <div className="role-dropdown-item-info">
+                      <div className="role-dropdown-item-title">{opt.fullTitle}</div>
+                      <div className="role-dropdown-item-desc">{opt.desc}</div>
+                    </div>
+                    {currentUser.role === opt.id && (
+                      <CheckCircle2 size={15} color="#ea580c" className="role-dropdown-check" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Notifications */}
