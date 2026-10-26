@@ -4297,3 +4297,250 @@ input[type='time'] {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   B.9 Mobile Responsive Header Alignment & Geometry Harmonization
+   Clean vertical alignment, matching button heights, no truncated text or stray dots
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Header Container & Flex Alignment */
+  .top-header {
+    height: 56px !important;
+    min-height: 56px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 0.75rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .header-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 2. Hide unlabelled lone API status dot on mobile header (accessible in navigation sidebar) */
+  .top-header .api-status-badge {
+    display: none !important;
+  }
+
+  /* 3. Harmonize all mobile action buttons (36x36 circular geometry, identical baseline) */
+  .mobile-menu-btn,
+  .mobile-search-trigger-btn,
+  .top-header .icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    border: 1px solid var(--border) !important;
+    background: var(--bg-card) !important;
+    color: var(--text-secondary) !important;
+    transition: var(--transition);
+  }
+
+  .mobile-menu-btn:active,
+  .mobile-search-trigger-btn:active,
+  .top-header .icon-btn:active {
+    background-color: var(--bg-subtle) !important;
+    transform: scale(0.96);
+  }
+
+  /* 4. User Profile Avatar & Chip */
+  .top-header .user-profile-chip {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+  }
+
+  .top-header .user-avatar {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 50% !important;
+    border: 1.5px solid #fed7aa !important;
+    display: block !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+  }
+
+  .top-header .user-meta {
+    display: none !important;
+  }
+
+  /* 5. Role Switcher Capsule Pill */
+  .top-header .role-switcher {
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 0.55rem !important;
+    border-radius: var(--radius-full) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.3rem !important;
+    background: #fff7ed !important;
+    border: 1px solid #fed7aa !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+
+  .top-header .role-prefix {
+    display: none !important;
+  }
+
+  .top-header .role-switcher .role-icon,
+  .top-header .role-switcher > svg:first-child {
+    display: inline-block !important;
+    color: #ea580c !important;
+    flex-shrink: 0 !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .top-header .role-select-wrapper {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .top-header .role-select {
+    position: static !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #c2410c !important;
+    font-weight: 700 !important;
+    font-size: 0.78rem !important;
+    outline: none !important;
+    cursor: pointer !important;
+    padding: 0 1rem 0 0 !important;
+    margin: 0 !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-width: 82px !important;
+    display: inline-block !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+  }
+
+  .top-header .role-chevron {
+    position: absolute !important;
+    right: 0 !important;
+    pointer-events: none !important;
+    color: #ea580c !important;
+    width: 11px !important;
+    height: 11px !important;
+  }
+
+  /* 6. Notification Bell & Badge */
+  .top-header .notification-container {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .top-header .notif-badge {
+    top: -2px !important;
+    right: -2px !important;
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 0.62rem !important;
+    line-height: 16px !important;
+    border-width: 1.5px !important;
+    border-color: #ffffff !important;
+  }
+}
+
+/* Fine-tuning for narrow mobile viewports (<= 400px) */
+@media (max-width: 400px) {
+  .top-header {
+    padding: 0 0.45rem !important;
+  }
+
+  .header-left {
+    gap: 0.35rem !important;
+  }
+
+  .header-right {
+    gap: 0.28rem !important;
+  }
+
+  .mobile-menu-btn,
+  .mobile-search-trigger-btn,
+  .top-header .icon-btn {
+    width: 33px !important;
+    height: 33px !important;
+    min-width: 33px !important;
+    min-height: 33px !important;
+    max-width: 33px !important;
+    max-height: 33px !important;
+  }
+
+  .top-header .user-profile-chip {
+    width: 33px !important;
+    height: 33px !important;
+    min-width: 33px !important;
+    min-height: 33px !important;
+  }
+
+  .top-header .user-avatar {
+    width: 31px !important;
+    height: 31px !important;
+    min-width: 31px !important;
+    min-height: 31px !important;
+  }
+
+  .top-header .role-switcher {
+    height: 33px !important;
+    min-height: 33px !important;
+    max-height: 33px !important;
+    padding: 0 0.42rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .top-header .role-select {
+    font-size: 0.72rem !important;
+    max-width: 68px !important;
+    padding-right: 0.85rem !important;
+  }
+}

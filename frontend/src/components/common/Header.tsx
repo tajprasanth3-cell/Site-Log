@@ -290,9 +290,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
           className="role-switcher"
           title={`Switch role (current: ${currentUser.role.replace('_', ' ')})`}
         >
-          <UserCheck size={14} />
+          <UserCheck size={14} className="role-icon" />
           <span className="role-prefix">Role:</span>
-          <span className="role-mobile-code" aria-hidden="true">{roleLabel}</span>
           <div className="role-select-wrapper">
             <select
               className="role-select"
@@ -300,8 +299,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               onChange={handleRoleChange}
               aria-label="Active user role"
             >
-              <option value="site_engineer">Site Engineer</option>
-              <option value="project_manager">Project Manager</option>
+              <option value="site_engineer">Engineer</option>
+              <option value="project_manager">Manager</option>
               <option value="admin">Admin</option>
             </select>
             <ChevronDown size={11} className="role-chevron" />
