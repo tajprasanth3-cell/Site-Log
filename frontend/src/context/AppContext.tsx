@@ -129,13 +129,37 @@ function saveToStorage<T>(key: string, value: T): void {
   }
 }
 
+function loadFromSession<T>(key: string, defaultValue: T): T {
+  try {
+    const item = sessionStorage.getItem(`sitelog_${key}`);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch (err) {
+    console.error(`Error loading ${key} from session:`, err);
+    return defaultValue;
+  }
+}
+
+function saveToSession<T>(key: string, value: T): void {
+  try {
+    sessionStorage.setItem(`sitelog_${key}`, JSON.stringify(value));
+  } catch (err) {
+    console.error(`Error saving ${key} to session:`, err);
+  }
+}
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>(() =>
     loadFromStorage('currentUser', initialUsers[0])
   );
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() =>
-    loadFromStorage('isAuthenticated', true)
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    // Clean up any legacy localStorage key to ensure login page is shown on fresh open
+    try {
+      localStorage.removeItem('sitelog_isAuthenticated');
+    } catch (e) {
+      // ignore
+    }
+    return loadFromSession('isAuthenticated', false);
+  });
   const [activeSection, setActiveSectionState] = useState<string>('dashboard');
 
   const setActiveSection = (section: string) => {
@@ -233,9 +257,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
   }, []);
 
-  // Auto-sync states to localStorage
+  // Auto-sync states to localStorage & sessionStorage
   useEffect(() => saveToStorage('currentUser', currentUser), [currentUser]);
-  useEffect(() => saveToStorage('isAuthenticated', isAuthenticated), [isAuthenticated]);
+  useEffect(() => {
+    saveToSession('isAuthenticated', isAuthenticated);
+    try {
+      localStorage.removeItem('sitelog_isAuthenticated');
+    } catch (e) {
+      // ignore
+    }
+  }, [isAuthenticated]);
   useEffect(() => saveToStorage('projects', projects), [projects]);
   useEffect(() => saveToStorage('sites', sites), [sites]);
   useEffect(() => saveToStorage('dailyReports', dailyReports), [dailyReports]);
@@ -302,6 +333,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const logout = () => {
     setIsAuthenticated(false);
+    try {
+      sessionStorage.removeItem('sitelog_isAuthenticated');
+      localStorage.removeItem('sitelog_isAuthenticated');
+    } catch (e) {
+      // ignore
+    }
     showToast('Logged out successfully', 'info');
   };
 

@@ -794,6 +794,22 @@
   ],
   "photos": [
     {
+      "id": "PHT-004",
+      "url": "/assets/login-bg-BKSvAwDn.jpg",
+      "title": "aprtmt",
+      "projectId": "PRJ-001",
+      "projectName": "Apartment Building",
+      "siteId": "SIT-001",
+      "siteName": "Site A - Tower Block 1",
+      "category": "Work Progress",
+      "dateTime": "2026-10-26 11:09",
+      "takenAt": "2026-10-26 16:38",
+      "uploadedAt": "2026-10-26 11:09",
+      "description": "",
+      "uploadedBy": "Arjun Mehta",
+      "createdAt": "2026-10-26T11:09:17.233Z"
+    },
+    {
       "id": "PHT-003",
       "url": "/src/assets/login-bg.jpg",
       "title": "Site Staging - Shift inspection",

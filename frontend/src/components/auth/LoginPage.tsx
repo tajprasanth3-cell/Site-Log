@@ -24,7 +24,7 @@ export const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('password123');
   const [showPassword, setShowPassword] = useState(false);
   const [selectedRole, setSelectedRole] = useState<UserRole>('site_engineer');
-  const [rememberMe, setRememberMe] = useState(true);
+  const [rememberMe, setRememberMe] = useState(false);
   const [loginFeedback, setLoginFeedback] = useState<string | null>(null);
 
   // Forgot Password Modal state
